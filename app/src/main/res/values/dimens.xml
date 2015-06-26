@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <dimen name="drawer_width">300dp</dimen>
+    <dimen name="drawer_profile_layout_height">168dp</dimen>
+    <dimen name="drawer_avatar_layout_padding_top">24dp</dimen>
+    <dimen name="drawer_avatar_layout_padding_bottom">8dp</dimen>
+    <dimen name="drawer_avatar_layout_padding">16dp</dimen>
+    <dimen name="drawer_avatar_size">64dp</dimen>
+    <dimen name="drawer_avatar_border_size">2dp</dimen>
+    <dimen name="drawer_profile_fields_height">56dp</dimen>
+    <dimen name="drawer_avatar_name_padding">16dp</dimen>
+    <dimen name="drawer_avatar_name_padding_height">8dp</dimen>
+    <dimen name="drawer_avatar_name_text_size">14sp</dimen>
+
+    <dimen name="default_size">48dp</dimen>
+
+</resources>
