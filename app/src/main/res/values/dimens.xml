@@ -16,4 +16,6 @@
 
     <dimen name="default_size">48dp</dimen>
 
+    <integer name="fragments_transition_duration">1000</integer>
+
 </resources>

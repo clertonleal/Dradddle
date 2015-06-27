@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]
+then
+  echo "Default option called: rebuild..."
+  ./dradddle rebuild
+elif [ "$1" == "rebuild" ]
+then
+  echo "Rebuilding... :)"
+  ./gradlew clean && ./gradlew build
+else
+  echo "Option not found... :("
+fi

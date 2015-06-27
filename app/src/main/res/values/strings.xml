@@ -8,4 +8,12 @@
     <string name="drawer_open">Menu aberto</string>
     <string name="drawer_close">Menu fechado</string>
 
+    <string name="home">Início</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Configurações</string>
+
+    <string name="popular">Popular</string>
+    <string name="recent">Recente</string>
+    <string name="debuts">Novos</string>
+
 </resources>
