@@ -3,24 +3,36 @@ package com.hpedrorodrigues.dradddle.view.activity
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
+
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.MenuItemCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
+
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+
 import com.hpedrorodrigues.dradddle.R
-import com.hpedrorodrigues.dradddle.view.fragment.BaseFragment
-import com.hpedrorodrigues.dradddle.view.fragment.HomeFragment
-import com.hpedrorodrigues.dradddle.view.fragment.ProfileFragment
-import com.hpedrorodrigues.dradddle.view.fragment.SettingsFragment
-import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.HOME
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.PROFILE
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.ABOUT
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.SETTINGS
+import com.hpedrorodrigues.dradddle.view.fragment.base.BaseNavigationFragment
+import com.hpedrorodrigues.dradddle.view.fragment.navigation.AboutFragment
+import com.hpedrorodrigues.dradddle.view.fragment.navigation.HomeFragment
+import com.hpedrorodrigues.dradddle.view.fragment.navigation.ProfileFragment
+import com.hpedrorodrigues.dradddle.view.fragment.navigation.SettingsFragment
+
 import kotlinx.android.synthetic.activity_main.toolbar
 import kotlinx.android.synthetic.activity_main.drawer_layout
 import kotlinx.android.synthetic.activity_main.navigation_view
+
 import java.util.HashMap
+
 import kotlin.platform.platformStatic
 
 public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -28,40 +40,31 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     companion object {
 
         platformStatic val DRAWER_REPLACE_SCREEN_DELAY = 400L
-        platformStatic val fragments = object : HashMap<Int, BaseFragment>() {
+        platformStatic val fragments = object: HashMap<DrawerItemIds, String>() {
             init {
-                put(R.id.drawer_profile, ProfileFragment())
-                put(R.id.drawer_home, HomeFragment())
-                put(R.id.drawer_settings, SettingsFragment())
+                put(HOME, javaClass<HomeFragment>().getName())
+                put(PROFILE, javaClass<ProfileFragment>().getName())
+                put(ABOUT, javaClass<AboutFragment>().getName())
+                put(SETTINGS, javaClass<SettingsFragment>().getName())
             }
         }
     }
 
-    protected var searchView: DradddleSearchView? = null
     protected var drawerToggle: ActionBarDrawerToggle? = null
+    protected var currentFragmentId: DrawerItemIds? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<BaseActivity>.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar as Toolbar)
         configNavigationView()
-        navigateTo(R.id.drawer_home)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        getMenuInflater().inflate(R.menu.main, menu)
-        searchView = DradddleSearchView(this)
-
-        val searchItem : MenuItem = menu.findItem(R.id.action_search)
-        MenuItemCompat.setActionView(searchItem, searchView)
-
-        return super<BaseActivity>.onCreateOptionsMenu(menu)
+        navigateTo(HOME)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.setChecked(true)
         drawer_layout.closeDrawer(GravityCompat.START)
-        navigateTo(item.getItemId())
+        navigateTo(DrawerItemIds.find(item.getItemId()))
         return true
     }
 
@@ -80,8 +83,11 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
+        if (isDrawerOpened()) {
+            closeDrawer()
+        } else if (currentFragmentId != HOME) {
+            val itemHome = navigation_view.getMenu().findItem(R.id.drawer_home)
+            onNavigationItemSelected(itemHome)
         } else {
             super<BaseActivity>.onBackPressed()
         }
@@ -93,7 +99,7 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
     protected fun configNavigationView() {
         navigation_view.setNavigationItemSelectedListener(this)
-        navigation_view.getMenu().findItem(R.id.drawer_home).setChecked(true)
+        onNavigationItemSelected(navigation_view.getMenu().findItem(R.id.drawer_home))
 
         drawerToggle = object: ActionBarDrawerToggle(this, drawer_layout, toolbar as Toolbar,
                 R.string.drawer_open, R.string.drawer_close) {
@@ -109,31 +115,29 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
 
         drawer_layout.setDrawerListener(drawerToggle)
         drawerToggle!!.syncState()
-
-        configNavigationHeaderView()
     }
 
-    protected fun configNavigationHeaderView() {
-        val headerView: View = navigation_view.inflateHeaderView(R.layout.drawer_header)
-        headerView.setOnClickListener(object: View.OnClickListener {
-
-            override fun onClick(view: View?) {
-                navigation_view.getMenu().findItem(R.id.drawer_home).setChecked(true)
-                drawer_layout.closeDrawer(GravityCompat.START)
-                navigateTo(R.id.drawer_profile)
-            }
-        })
+    protected fun isDrawerOpened(): Boolean {
+        return drawer_layout.isDrawerOpen(GravityCompat.START)
     }
 
-    private fun navigateTo(itemId: Int) {
-        Handler().postDelayed(object : Runnable {
+    protected fun closeDrawer() {
+        drawer_layout.closeDrawer(GravityCompat.START)
+    }
+
+    private fun navigateTo(itemId: DrawerItemIds) {
+        Handler().postDelayed(object: Runnable {
 
             override fun run() {
-                getFragmentManager()
+                val fragment = Fragment.instantiate(getBaseContext(), fragments.get(itemId))
+
+                getSupportFragmentManager()
                         .beginTransaction()
-                        .setCustomAnimations(R.animator.start, R.animator.end)
-                        .replace(R.id.container, fragments.get(itemId))
+                        .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+                        .replace(R.id.container, fragment)
                         .commit()
+
+                currentFragmentId = itemId
             }
         }, DRAWER_REPLACE_SCREEN_DELAY)
     }

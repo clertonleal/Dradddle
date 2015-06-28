@@ -3,18 +3,19 @@ package com.hpedrorodrigues.dradddle.application
 import android.app.Application
 
 import com.hpedrorodrigues.dradddle.dagger.DradddleComponent
+import kotlin.platform.platformStatic
+import kotlin.properties.Delegates
 
 public class DradddleApplication : BaseApplication() {
 
-    private var dradddleComponent: DradddleComponent? = null
+    companion object {
+
+        platformStatic public var dradddleComponent: DradddleComponent by Delegates.notNull()
+    }
 
     override fun onCreate() {
         super.onCreate()
         dradddleComponent = buildDaggerComponent()
-        component().inject(this)
-    }
-
-    public fun component(): DradddleComponent {
-        return dradddleComponent!!
+        dradddleComponent.inject(this)
     }
 }

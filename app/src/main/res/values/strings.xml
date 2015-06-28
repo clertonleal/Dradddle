@@ -10,10 +10,21 @@
 
     <string name="home">Início</string>
     <string name="profile">Perfil</string>
+    <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
 
     <string name="popular">Popular</string>
     <string name="recent">Recente</string>
     <string name="debuts">Novos</string>
+
+    <string name="profile_name">Pedro Rodrigues</string>
+    <string name="profile_email">hs.pedro.rodrigues@gmail.com</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor sit amet augue
+        vitae molestie. Nam ut orci vitae lorem efficitur commodo. Donec tortor velit, faucibus
+        ut dolor eget, feugiat dapibus tellus. Etiam tempus purus ut tellus ornare, nec fermentum
+        dui dignissim. Etiam tristique commodo libero sit amet molestie.
+    </string>
 
 </resources>

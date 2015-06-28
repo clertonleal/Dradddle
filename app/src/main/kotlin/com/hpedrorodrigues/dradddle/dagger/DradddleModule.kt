@@ -18,20 +18,7 @@ import com.hpedrorodrigues.dradddle.application.BaseApplication
 import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 import java.util.concurrent.TimeUnit
 
-/**
- * A module for Android-specific dependencies which require a [Context] or
- * [android.app.Application] to create.
- */
-Module
-public class DradddleModule(private val application: BaseApplication) {
-
-    /**
-     * Allow the application context to be injected but require that it be annotated with
-     * [@Annotation][ForApplication] to explicitly differentiate it from an activity context.
-     */
-    Provides Singleton ForApplication fun provideApplicationContext(): Context {
-        return application
-    }
+Module public class DradddleModule(private val application: BaseApplication) {
 
     Provides fun provideContext(): Context {
         return application.getBaseContext()

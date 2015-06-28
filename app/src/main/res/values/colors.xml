@@ -8,7 +8,7 @@
 
     <color name="screens_color">#F5F5F5</color>
 
-    <color name="drawer_item_text">@color/screens_color</color>
+    <color name="drawer_item_text">#424242</color>
     <color name="drawer_item_text_checked">@color/color_primary</color>
 
 </resources>

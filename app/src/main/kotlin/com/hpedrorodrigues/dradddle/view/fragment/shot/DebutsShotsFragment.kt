@@ -1,10 +1,11 @@
-package com.hpedrorodrigues.dradddle.view.fragment
+package com.hpedrorodrigues.dradddle.view.fragment.shot
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hpedrorodrigues.dradddle.R
+import com.hpedrorodrigues.dradddle.view.fragment.base.BaseShotsFragment
 
 public class DebutsShotsFragment : BaseShotsFragment() {
 
