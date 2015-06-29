@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/screens_color">
+    android:background="@color/screens">
 
     <LinearLayout
         android:id="@+id/layout_cover"
@@ -42,7 +42,7 @@
             android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_account"
             app:border_width="@dimen/drawer_avatar_border_size"
-            app:border_color="@color/screens_color"/>
+            app:border_color="@color/screens"/>
 
     </LinearLayout>
 

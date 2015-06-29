@@ -21,10 +21,11 @@
     <string name="profile_email">hs.pedro.rodrigues@gmail.com</string>
 
     <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor sit amet augue
-        vitae molestie. Nam ut orci vitae lorem efficitur commodo. Donec tortor velit, faucibus
-        ut dolor eget, feugiat dapibus tellus. Etiam tempus purus ut tellus ornare, nec fermentum
-        dui dignissim. Etiam tristique commodo libero sit amet molestie.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed faucibus purus. Donec ac tincidunt lorem, vel lacinia dolor. Duis viverra vitae nunc eu feugiat. In dictum ipsum metus, in sagittis felis elementum ac. Fusce facilisis, mauris id consectetur lobortis, ante ex suscipit quam, at gravida leo nisi dignissim ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean tincidunt faucibus quam, ac semper erat malesuada sit amet.
+
+Etiam mollis sagittis imperdiet. Cras vitae lorem consectetur, blandit orci vel, porttitor nisl. Nam non consectetur sapien, nec maximus tortor. Fusce eu tortor est. Aenean aliquet dui vitae metus dapibus, commodo egestas tellus condimentum. Quisque at ex ligula. Nam a volutpat nisl.
+
+Nullam quis mauris non orci dictum elementum sit amet quis nisi. Vestibulum eget facilisis augue. Proin eu laoreet libero. Proin feugiat pharetra lacus, eu facilisis leo fringilla vel. In sapien eros, vehicula vitae consectetur eget, interdum at erat. Sed quis nisl eu diam egestas laoreet. Fusce tempor, ex eget maximus accumsan, ex purus accumsan nisi, a consequat nulla lacus quis odio. Pellentesque sed lectus nec ante euismod fringilla. Vestibulum efficitur vitae nulla vitae congue. Suspendisse eget nibh eu dui consequat porttitor. Aenean placerat orci ex, in luctus risus maximus id. Curabitur ullamcorper tempus nibh vitae sodales. Suspendisse leo velit, aliquet ut viverra sit amet, placerat dapibus felis. Etiam vitae lacus dapibus purus gravida tempus.
     </string>
 
 </resources>

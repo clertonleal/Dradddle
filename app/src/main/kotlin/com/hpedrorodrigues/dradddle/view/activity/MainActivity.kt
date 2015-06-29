@@ -1,10 +1,12 @@
 package com.hpedrorodrigues.dradddle.view.activity
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.MenuItemCompat
@@ -16,20 +18,19 @@ import android.view.MenuItem
 import android.view.View
 
 import com.hpedrorodrigues.dradddle.R
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.HOME
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.PROFILE
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.ABOUT
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemIds.SETTINGS
-import com.hpedrorodrigues.dradddle.view.fragment.base.BaseNavigationFragment
-import com.hpedrorodrigues.dradddle.view.fragment.navigation.AboutFragment
-import com.hpedrorodrigues.dradddle.view.fragment.navigation.HomeFragment
-import com.hpedrorodrigues.dradddle.view.fragment.navigation.ProfileFragment
-import com.hpedrorodrigues.dradddle.view.fragment.navigation.SettingsFragment
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.HOME
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.PROFILE
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.ABOUT
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.SETTINGS
+import com.hpedrorodrigues.dradddle.view.adapter.HomePagerAdapter
 
 import kotlinx.android.synthetic.activity_main.toolbar
-import kotlinx.android.synthetic.activity_main.drawer_layout
-import kotlinx.android.synthetic.activity_main.navigation_view
+import kotlinx.android.synthetic.activity_main.drawerLayout
+import kotlinx.android.synthetic.activity_main.navigationView
+import kotlinx.android.synthetic.activity_main.pager
+import kotlinx.android.synthetic.activity_main.tabs
+import kotlinx.android.synthetic.activity_main.fabDone
 
 import java.util.HashMap
 
@@ -40,31 +41,35 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     companion object {
 
         platformStatic val DRAWER_REPLACE_SCREEN_DELAY = 400L
-        platformStatic val fragments = object: HashMap<DrawerItemIds, String>() {
-            init {
-                put(HOME, javaClass<HomeFragment>().getName())
-                put(PROFILE, javaClass<ProfileFragment>().getName())
-                put(ABOUT, javaClass<AboutFragment>().getName())
-                put(SETTINGS, javaClass<SettingsFragment>().getName())
-            }
-        }
+        platformStatic val REQUEST_PROFILE = 1
+        platformStatic val REQUEST_ABOUT = 2
+        platformStatic val REQUEST_SETTINGS = 3
     }
 
     protected var drawerToggle: ActionBarDrawerToggle? = null
-    protected var currentFragmentId: DrawerItemIds? = null
+    protected var currentItemId: DrawerItemId? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<BaseActivity>.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar as Toolbar)
         configNavigationView()
-        navigateTo(HOME)
+        configViewPager()
+        configFabDone()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            REQUEST_PROFILE, REQUEST_ABOUT, REQUEST_SETTINGS ->
+                getMenuItem(R.id.drawer_home).setChecked(true)
+        }
+        super<BaseActivity>.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.setChecked(true)
-        drawer_layout.closeDrawer(GravityCompat.START)
-        navigateTo(DrawerItemIds.find(item.getItemId()))
+        drawerLayout.closeDrawer(GravityCompat.START)
+        navigateTo(DrawerItemId.find(item.getItemId()))
         return true
     }
 
@@ -85,9 +90,6 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     override fun onBackPressed() {
         if (isDrawerOpened()) {
             closeDrawer()
-        } else if (currentFragmentId != HOME) {
-            val itemHome = navigation_view.getMenu().findItem(R.id.drawer_home)
-            onNavigationItemSelected(itemHome)
         } else {
             super<BaseActivity>.onBackPressed()
         }
@@ -98,10 +100,11 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     protected fun configNavigationView() {
-        navigation_view.setNavigationItemSelectedListener(this)
-        onNavigationItemSelected(navigation_view.getMenu().findItem(R.id.drawer_home))
+        navigationView.setNavigationItemSelectedListener(this)
+        navigationView.inflateHeaderView(R.layout.drawer_header)
+                .setOnClickListener { onNavigationItemSelected(getMenuItem(R.id.drawer_profile)) }
 
-        drawerToggle = object: ActionBarDrawerToggle(this, drawer_layout, toolbar as Toolbar,
+        drawerToggle = object: ActionBarDrawerToggle(this, drawerLayout, toolbar as Toolbar,
                 R.string.drawer_open, R.string.drawer_close) {
 
             override fun onDrawerOpened(drawerView: View?) {
@@ -113,31 +116,45 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
             }
         }
 
-        drawer_layout.setDrawerListener(drawerToggle)
+        drawerLayout.setDrawerListener(drawerToggle)
         drawerToggle!!.syncState()
     }
 
+    protected fun configViewPager() {
+        pager.setAdapter(HomePagerAdapter(getSupportFragmentManager()))
+        tabs.setupWithViewPager(pager)
+    }
+
+    protected fun configFabDone() {
+        fabDone.setOnClickListener { view: View ->
+            Snackbar.make(view, "Share this app", Snackbar.LENGTH_LONG).setAction("OK", {}).show()
+        }
+    }
+
     protected fun isDrawerOpened(): Boolean {
-        return drawer_layout.isDrawerOpen(GravityCompat.START)
+        return drawerLayout.isDrawerOpen(GravityCompat.START)
     }
 
     protected fun closeDrawer() {
-        drawer_layout.closeDrawer(GravityCompat.START)
+        drawerLayout.closeDrawer(GravityCompat.START)
     }
 
-    private fun navigateTo(itemId: DrawerItemIds) {
+    private fun getMenuItem(itemId: Int): MenuItem {
+        return navigationView.getMenu().findItem(itemId)
+    }
+
+    private fun navigateTo(itemId: DrawerItemId) {
         Handler().postDelayed(object: Runnable {
 
             override fun run() {
-                val fragment = Fragment.instantiate(getBaseContext(), fragments.get(itemId))
-
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
-                        .replace(R.id.container, fragment)
-                        .commit()
-
-                currentFragmentId = itemId
+                when (itemId) {
+                    HOME -> {}
+                    PROFILE -> startWithResultAndSlideDown(javaClass<ProfileActivity>(), REQUEST_PROFILE)
+                    ABOUT -> startWithResultAndSlideLeft(javaClass<AboutActivity>(), REQUEST_ABOUT)
+                    SETTINGS -> startWithResultAndSlideRight(javaClass<SettingsActivity>(), REQUEST_SETTINGS)
+                    else -> throw IllegalArgumentException("Invalid item id $itemId")
+                }
+                currentItemId = itemId
             }
         }, DRAWER_REPLACE_SCREEN_DELAY)
     }

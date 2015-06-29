@@ -14,19 +14,14 @@ import javax.inject.Inject
 
 public class PopularShotsFragment : BaseShotsFragment() {
 
-    var context: Context? = null
-        @Inject set
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val recyclerView = inflater.inflate(R.layout.fragment_popular_shots, container, false) as SuperRecyclerView
+        val superRecyclerView = inflater
+                .inflate(R.layout.fragment_popular_shots, container, false) as SuperRecyclerView
 
-        val linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL)
+        superRecyclerView.setLayoutManager(LinearLayoutManager(superRecyclerView.getContext()))
+        superRecyclerView.setAdapter(PopularShotsAdapter())
 
-        recyclerView.setLayoutManager(linearLayoutManager)
-        recyclerView.setAdapter(PopularShotsAdapter())
-
-        return recyclerView
+        return superRecyclerView
     }
 }

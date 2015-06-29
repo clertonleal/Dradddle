@@ -2,4 +2,39 @@
 
 <resources>
 
+    <style name="AppTheme.Toolbar" parent="BaseTheme.Toolbar"/>
+    <style name="BaseTheme.Toolbar" parent="AppTheme">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="AppTheme.SearchView" parent="BaseTheme.SearchView"/>
+    <style name="BaseTheme.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@mipmap/ic_action_search</item>
+        <item name="closeIcon">@mipmap/ic_action_navigation_close</item>
+    </style>
+
+    <style name="AppTheme.CardContent" parent="BaseTheme.CardContent"/>
+    <style name="BaseTheme.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AppTheme.FAB" parent="BaseTheme.FAB"/>
+    <style name="BaseTheme.FAB">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/fab_compat_margin</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="borderWidth">0dp</item>
+    </style>
+
 </resources>

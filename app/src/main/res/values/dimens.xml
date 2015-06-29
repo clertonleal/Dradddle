@@ -19,5 +19,18 @@
     <integer name="fragments_transition_duration">400</integer>
 
     <dimen name="default_app_bar_height">192dp</dimen>
+    <dimen name="about_app_bar_height">326dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+
+    <dimen name="spacing_xsmall">2dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+
+    <dimen name="elevation_low">9dp</dimen>
+    <dimen name="elevation_high">12dp</dimen>
+    <dimen name="status_bar_height">25dp</dimen>
+
+    <dimen name="fab_compat_margin">16dp</dimen>
 
 </resources>
