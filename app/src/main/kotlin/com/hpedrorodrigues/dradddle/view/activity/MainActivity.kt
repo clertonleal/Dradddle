@@ -24,6 +24,7 @@ import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.PROFILE
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.ABOUT
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.SETTINGS
 import com.hpedrorodrigues.dradddle.view.adapter.HomePagerAdapter
+import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
 import kotlinx.android.synthetic.activity_main.toolbar
 import kotlinx.android.synthetic.activity_main.drawerLayout
@@ -57,6 +58,7 @@ public class MainActivity : BaseActivity() {
 
     protected var drawerToggle: ActionBarDrawerToggle? = null
     protected var currentItem: DrawerItem? = null
+    protected var searchView: DradddleSearchView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,16 @@ public class MainActivity : BaseActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         drawerToggle!!.onConfigurationChanged(newConfig)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        getMenuInflater().inflate(R.menu.main, menu)
+
+        searchView = DradddleSearchView(this)
+        val searchItem : MenuItem = menu.findItem(R.id.action_search)
+        MenuItemCompat.setActionView(searchItem, searchView)
+
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -132,6 +144,8 @@ public class MainActivity : BaseActivity() {
                 invalidateOptionsMenu()
             }
         }
+
+        getMenuItem(R.id.drawer_home).setChecked(true)
 
         drawerLayout.setDrawerListener(drawerToggle)
         drawerToggle!!.syncState()
