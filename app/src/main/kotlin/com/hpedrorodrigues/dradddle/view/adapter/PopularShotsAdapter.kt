@@ -21,6 +21,6 @@ Inject public class PopularShotsAdapter() : RecyclerView.Adapter<PopularShotsHol
     }
 
     override fun getItemCount(): Int {
-        return 20
+        return 40
     }
 }

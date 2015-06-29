@@ -18,11 +18,11 @@ import android.view.MenuItem
 import android.view.View
 
 import com.hpedrorodrigues.dradddle.R
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.HOME
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.PROFILE
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.ABOUT
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItemId.SETTINGS
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.HOME
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.PROFILE
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.ABOUT
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.SETTINGS
 import com.hpedrorodrigues.dradddle.view.adapter.HomePagerAdapter
 
 import kotlinx.android.synthetic.activity_main.toolbar
@@ -36,21 +36,30 @@ import java.util.HashMap
 
 import kotlin.platform.platformStatic
 
-public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity : BaseActivity() {
 
     companion object {
 
         platformStatic val DRAWER_REPLACE_SCREEN_DELAY = 400L
+
         platformStatic val REQUEST_PROFILE = 1
         platformStatic val REQUEST_ABOUT = 2
         platformStatic val REQUEST_SETTINGS = 3
+
+        platformStatic val classes = object: HashMap<DrawerItem, Class<out BaseActivity>>() {
+            init {
+                put(DrawerItem.PROFILE, javaClass<ProfileActivity>())
+                put(DrawerItem.ABOUT, javaClass<AboutActivity>())
+                put(DrawerItem.SETTINGS, javaClass<SettingsActivity>())
+            }
+        }
     }
 
     protected var drawerToggle: ActionBarDrawerToggle? = null
-    protected var currentItemId: DrawerItemId? = null
+    protected var currentItem: DrawerItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super<BaseActivity>.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar as Toolbar)
         configNavigationView()
@@ -63,18 +72,11 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
             REQUEST_PROFILE, REQUEST_ABOUT, REQUEST_SETTINGS ->
                 getMenuItem(R.id.drawer_home).setChecked(true)
         }
-        super<BaseActivity>.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        item.setChecked(true)
-        drawerLayout.closeDrawer(GravityCompat.START)
-        navigateTo(DrawerItemId.find(item.getItemId()))
-        return true
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
-        super<BaseActivity>.onConfigurationChanged(newConfig)
+        super.onConfigurationChanged(newConfig)
         drawerToggle!!.onConfigurationChanged(newConfig)
     }
 
@@ -83,7 +85,7 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
             android.support.v7.appcompat.R.id.home ->
                 return drawerToggle!!.onOptionsItemSelected(item)
             else ->
-                return super<BaseActivity>.onOptionsItemSelected(item)
+                return super.onOptionsItemSelected(item)
         }
     }
 
@@ -91,7 +93,7 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         if (isDrawerOpened()) {
             closeDrawer()
         } else {
-            super<BaseActivity>.onBackPressed()
+            super.onBackPressed()
         }
     }
 
@@ -100,9 +102,24 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     protected fun configNavigationView() {
-        navigationView.setNavigationItemSelectedListener(this)
+        navigationView.setNavigationItemSelectedListener(
+                object: NavigationView.OnNavigationItemSelectedListener {
+
+                    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                        item.setChecked(true)
+                        closeDrawer()
+                        navigateTo(DrawerItem.find(item.getItemId()))
+                        return true
+                    }
+                })
+
         navigationView.inflateHeaderView(R.layout.drawer_header)
-                .setOnClickListener { onNavigationItemSelected(getMenuItem(R.id.drawer_profile)) }
+                .setOnClickListener {
+                    val item = getMenuItem(R.id.drawer_profile)
+                    item.setChecked(true)
+                    closeDrawer()
+                    navigateTo(DrawerItem.find(item.getItemId()))
+                }
 
         drawerToggle = object: ActionBarDrawerToggle(this, drawerLayout, toolbar as Toolbar,
                 R.string.drawer_open, R.string.drawer_close) {
@@ -126,8 +143,9 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
     }
 
     protected fun configFabDone() {
-        fabDone.setOnClickListener { view: View ->
-            Snackbar.make(view, "Share this app", Snackbar.LENGTH_LONG).setAction("OK", {}).show()
+        fabDone.setOnClickListener { view ->
+            Snackbar.make(view, "Done", Snackbar.LENGTH_LONG)
+                    .setAction(android.R.string.ok, {}).show()
         }
     }
 
@@ -143,19 +161,16 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
         return navigationView.getMenu().findItem(itemId)
     }
 
-    private fun navigateTo(itemId: DrawerItemId) {
-        Handler().postDelayed(object: Runnable {
-
-            override fun run() {
-                when (itemId) {
-                    HOME -> {}
-                    PROFILE -> startWithResultAndSlideDown(javaClass<ProfileActivity>(), REQUEST_PROFILE)
-                    ABOUT -> startWithResultAndSlideLeft(javaClass<AboutActivity>(), REQUEST_ABOUT)
-                    SETTINGS -> startWithResultAndZoom(javaClass<SettingsActivity>(), REQUEST_SETTINGS)
-                    else -> throw IllegalArgumentException("Invalid item id $itemId")
-                }
-                currentItemId = itemId
+    private fun navigateTo(item: DrawerItem) {
+        Handler().postDelayed({
+            when (item) {
+                HOME -> {}
+                PROFILE -> startWithResultAndSlideDown(classes.get(PROFILE), REQUEST_PROFILE)
+                ABOUT -> startWithResultAndSlideLeft(classes.get(ABOUT), REQUEST_ABOUT)
+                SETTINGS -> startWithResultAndZoom(classes.get(SETTINGS), REQUEST_SETTINGS)
+                else -> throw IllegalArgumentException("Invalid item id $item")
             }
+            currentItem = item
         }, DRAWER_REPLACE_SCREEN_DELAY)
     }
 }

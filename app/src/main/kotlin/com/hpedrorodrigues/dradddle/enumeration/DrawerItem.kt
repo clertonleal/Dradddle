@@ -3,7 +3,7 @@ package com.hpedrorodrigues.dradddle.enumeration
 import com.hpedrorodrigues.dradddle.R
 import kotlin.platform.platformStatic
 
-enum class DrawerItemId(private val itemId: Int) {
+enum class DrawerItem(private val itemId: Int) {
     HOME(R.id.drawer_home),
     PROFILE(R.id.drawer_profile),
     ABOUT(R.id.drawer_about),
@@ -11,8 +11,8 @@ enum class DrawerItemId(private val itemId: Int) {
 
     companion object {
 
-        platformStatic fun find(itemId: Int): DrawerItemId {
-            return DrawerItemId.values().filter { _ -> _.getItemId() == itemId } [0]
+        platformStatic fun find(itemId: Int): DrawerItem {
+            return DrawerItem.values().filter { _ -> _.getItemId() == itemId } [0]
         }
     }
 

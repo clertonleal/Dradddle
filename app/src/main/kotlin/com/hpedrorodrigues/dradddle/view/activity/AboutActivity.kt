@@ -19,7 +19,8 @@ public class AboutActivity() : BaseActivity() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 
         fabShare.setOnClickListener { view: View ->
-            Snackbar.make(view, "Share this app", Snackbar.LENGTH_LONG).setAction("OK", {}).show()
+            Snackbar.make(view, "Share this app", Snackbar.LENGTH_LONG)
+                    .setAction(android.R.string.ok, {}).show()
         }
     }
 
