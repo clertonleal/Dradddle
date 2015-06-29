@@ -5,22 +5,37 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.hpedrorodrigues.dradddle.R
 import com.hpedrorodrigues.dradddle.application.DradddleApplication
 import com.hpedrorodrigues.dradddle.dagger.DradddleComponent
+import com.hpedrorodrigues.dradddle.enumeration.AnimationsInfo
+import com.hpedrorodrigues.dradddle.enumeration.SupportedAnimations
+import kotlin.platform.platformStatic
 
 public abstract class BaseActivity : AppCompatActivity() {
 
+    companion object {
+
+        platformStatic protected val ARG_ANIMATION: String = "arg_animation"
+    }
+
     protected abstract fun injectMembers()
 
-    protected enum class SupportedAnimations {FADE, ZOOM, SLIDE_LEFT, SLIDE_RIGHT, SLIDE_UP, SLIDE_DOWN}
+    private var currentAnimation: SupportedAnimations = SupportedAnimations.FADE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectMembers()
+
+        val args = getIntent()
+        if (args != null && args.hasExtra(ARG_ANIMATION)) {
+            val animationOrder = args.getIntExtra(ARG_ANIMATION, 0)
+            currentAnimation = SupportedAnimations.find(animationOrder)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -36,12 +51,12 @@ public abstract class BaseActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overrideTransition(SupportedAnimations.FADE)
+        overrideTransitionWithReverse()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overrideTransition(SupportedAnimations.FADE)
+        overrideTransitionWithReverse()
     }
 
     override fun invalidateOptionsMenu() {
@@ -138,18 +153,31 @@ public abstract class BaseActivity : AppCompatActivity() {
     }
 
     private fun <A : BaseActivity> start(activityClass: Class<A>, animation: SupportedAnimations) {
-        startActivity(Intent(this, activityClass))
+        val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
+        val intent = Intent(this, activityClass)
+        intent.putExtra(ARG_ANIMATION, reverseAnimation.getOrder())
+
+        startActivity(intent)
         overrideTransition(animation)
     }
 
     private fun <A : BaseActivity> startWithResult(
             activityClass: Class<A>, requestCode: Int, animation: SupportedAnimations) {
-        startActivityForResult(Intent(this, activityClass), requestCode)
+        val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
+        val intent = Intent(this, activityClass)
+        intent.putExtra(ARG_ANIMATION, reverseAnimation.getOrder())
+
+        startActivityForResult(intent, requestCode)
         overrideTransition(animation)
     }
 
     private fun replaceFragment(containerId: Int, fragment: Fragment, animation: SupportedAnimations) {
         val transaction = getSupportFragmentManager().beginTransaction()
+
+        val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
+        val bundle = if (fragment.getArguments() == null) Bundle() else fragment.getArguments()
+        bundle.putInt(ARG_ANIMATION, reverseAnimation.getOrder())
+        fragment.setArguments(bundle)
 
         when (animation) {
             SupportedAnimations.FADE ->
@@ -168,6 +196,7 @@ public abstract class BaseActivity : AppCompatActivity() {
         }
 
         transaction.replace(containerId, fragment).commit()
+        currentAnimation = animation
     }
 
     private fun overrideTransition(animation: SupportedAnimations) {
@@ -186,5 +215,10 @@ public abstract class BaseActivity : AppCompatActivity() {
                 overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down)
             else -> IllegalArgumentException("Invalid animation $animation")
         }
+        currentAnimation = animation
+    }
+
+    private fun overrideTransitionWithReverse() {
+        overrideTransition(AnimationsInfo.findReverseByAnimation(currentAnimation))
     }
 }

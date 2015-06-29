@@ -151,7 +151,7 @@ public class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelec
                     HOME -> {}
                     PROFILE -> startWithResultAndSlideDown(javaClass<ProfileActivity>(), REQUEST_PROFILE)
                     ABOUT -> startWithResultAndSlideLeft(javaClass<AboutActivity>(), REQUEST_ABOUT)
-                    SETTINGS -> startWithResultAndSlideRight(javaClass<SettingsActivity>(), REQUEST_SETTINGS)
+                    SETTINGS -> startWithResultAndZoom(javaClass<SettingsActivity>(), REQUEST_SETTINGS)
                     else -> throw IllegalArgumentException("Invalid item id $itemId")
                 }
                 currentItemId = itemId
