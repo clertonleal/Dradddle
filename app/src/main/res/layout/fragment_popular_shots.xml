@@ -6,4 +6,7 @@
     android:id="@+id/recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:recyclerPadding="16dp" />
+    app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+    app:recyclerClipToPadding="false"
+    app:recyclerPadding="16dp"
+    app:scrollbarStyle="outsideInset" />
