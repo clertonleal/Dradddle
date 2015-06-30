@@ -14,7 +14,6 @@ import com.hpedrorodrigues.dradddle.view.fragment.base.BaseShotsFragment
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import com.malinskiy.superrecyclerview.swipe.SwipeDismissRecyclerViewTouchListener
 import com.malinskiy.superrecyclerview.swipe.SwipeLayout
-import javax.inject.Inject
 import kotlin.platform.platformStatic
 
 public class PopularShotsFragment : BaseShotsFragment() {
@@ -31,6 +30,10 @@ public class PopularShotsFragment : BaseShotsFragment() {
         configSuperRecyclerView(superRecyclerView)
 
         return superRecyclerView
+    }
+
+    override fun injectMembers() {
+        dradddleComponent().inject(this)
     }
 
     private fun configSuperRecyclerView(superRecyclerView: SuperRecyclerView) {

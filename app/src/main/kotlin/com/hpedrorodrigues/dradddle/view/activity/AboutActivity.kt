@@ -25,6 +25,6 @@ public class AboutActivity() : BaseActivity() {
     }
 
     override fun injectMembers() {
-        dribbbleComponent().inject(this)
+        dradddleComponent().inject(this)
     }
 }

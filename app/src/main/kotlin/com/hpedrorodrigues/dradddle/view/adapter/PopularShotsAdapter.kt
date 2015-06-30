@@ -8,19 +8,24 @@ import com.hpedrorodrigues.dradddle.application.DradddleApplication
 import com.hpedrorodrigues.dradddle.view.adapter.holder.PopularShotsHolder
 import javax.inject.Inject
 
-Inject public class PopularShotsAdapter() : RecyclerView.Adapter<PopularShotsHolder>() {
+public class PopularShotsAdapter() : RecyclerView.Adapter<PopularShotsHolder>() {
 
-    var layoutInflater: LayoutInflater? = null
+    var inflater: LayoutInflater? = null
         @Inject set
 
+    init {
+        DradddleApplication.component().inject(this)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PopularShotsHolder? {
-        return PopularShotsHolder(LayoutInflater.from(parent!!.getContext()).inflate(R.layout.popular_shots_item, parent, false))
+        return PopularShotsHolder(inflater!!.inflate(R.layout.popular_shots_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularShotsHolder, position: Int) {
+        holder.getTextVew().setText(R.string.app_name)
     }
 
     override fun getItemCount(): Int {
-        return 40
+        return 200
     }
 }

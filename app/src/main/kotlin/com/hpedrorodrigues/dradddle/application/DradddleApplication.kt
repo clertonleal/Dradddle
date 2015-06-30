@@ -10,7 +10,10 @@ public class DradddleApplication : BaseApplication() {
 
     companion object {
 
-        platformStatic public var dradddleComponent: DradddleComponent by Delegates.notNull()
+        platformStatic protected var dradddleComponent: DradddleComponent by Delegates.notNull()
+        platformStatic public fun component(): DradddleComponent {
+            return dradddleComponent
+        }
     }
 
     override fun onCreate() {

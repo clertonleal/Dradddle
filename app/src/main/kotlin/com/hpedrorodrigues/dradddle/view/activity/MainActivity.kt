@@ -23,7 +23,7 @@ import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.HOME
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.PROFILE
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.ABOUT
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.SETTINGS
-import com.hpedrorodrigues.dradddle.view.adapter.HomePagerAdapter
+import com.hpedrorodrigues.dradddle.view.adapter.ShotsPagerAdapter
 import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
 import kotlinx.android.synthetic.activity_main.toolbar
@@ -86,7 +86,7 @@ public class MainActivity : BaseActivity() {
         getMenuInflater().inflate(R.menu.main, menu)
 
         searchView = DradddleSearchView(this)
-        val searchItem : MenuItem = menu.findItem(R.id.action_search)
+        val searchItem = menu.findItem(R.id.action_search)
         MenuItemCompat.setActionView(searchItem, searchView)
 
         return super.onCreateOptionsMenu(menu)
@@ -110,7 +110,7 @@ public class MainActivity : BaseActivity() {
     }
 
     override fun injectMembers() {
-        dribbbleComponent().inject(this)
+        dradddleComponent().inject(this)
     }
 
     protected fun configNavigationView() {
@@ -152,7 +152,7 @@ public class MainActivity : BaseActivity() {
     }
 
     protected fun configViewPager() {
-        pager.setAdapter(HomePagerAdapter(getSupportFragmentManager()))
+        pager.setAdapter(ShotsPagerAdapter(getSupportFragmentManager()))
         tabs.setupWithViewPager(pager)
     }
 
@@ -179,10 +179,10 @@ public class MainActivity : BaseActivity() {
         Handler().postDelayed({
             when (item) {
                 HOME -> {}
-                PROFILE -> startWithResultAndSlideDown(classes.get(PROFILE), REQUEST_PROFILE)
-                ABOUT -> startWithResultAndSlideLeft(classes.get(ABOUT), REQUEST_ABOUT)
-                SETTINGS -> startWithResultAndZoom(classes.get(SETTINGS), REQUEST_SETTINGS)
-                else -> throw IllegalArgumentException("Invalid item id $item")
+                PROFILE -> startWithResultAndFade(classes.get(PROFILE), REQUEST_PROFILE)
+                ABOUT -> startWithResultAndFade(classes.get(ABOUT), REQUEST_ABOUT)
+                SETTINGS -> startWithResultAndFade(classes.get(SETTINGS), REQUEST_SETTINGS)
+                else -> throw IllegalArgumentException("Invalid item $item")
             }
             currentItem = item
         }, DRAWER_REPLACE_SCREEN_DELAY)

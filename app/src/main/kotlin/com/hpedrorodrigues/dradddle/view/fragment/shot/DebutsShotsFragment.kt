@@ -13,4 +13,8 @@ public class DebutsShotsFragment : BaseShotsFragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_debuts_shots, container, false)
     }
+
+    override fun injectMembers() {
+        dradddleComponent().inject(this)
+    }
 }

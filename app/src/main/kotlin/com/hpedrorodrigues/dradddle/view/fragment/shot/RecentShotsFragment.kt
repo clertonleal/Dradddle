@@ -13,4 +13,8 @@ public class RecentShotsFragment : BaseShotsFragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_recent_shots, container, false)
     }
+    
+    override fun injectMembers() {
+        dradddleComponent().inject(this)
+    }
 }

@@ -19,6 +19,6 @@ public class ProfileActivity() : BaseActivity() {
     }
 
     override fun injectMembers() {
-        dribbbleComponent().inject(this)
+        dradddleComponent().inject(this)
     }
 }

@@ -41,7 +41,7 @@ public abstract class BaseActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-                super.onBackPressed()
+                finish()
                 return true
             }
             else ->
@@ -64,8 +64,8 @@ public abstract class BaseActivity : AppCompatActivity() {
         closeKeyBoard()
     }
 
-    protected fun dribbbleComponent(): DradddleComponent {
-        return DradddleApplication.dradddleComponent
+    protected fun dradddleComponent(): DradddleComponent {
+        return DradddleApplication.component()
     }
 
     protected fun openKeyBoard() {

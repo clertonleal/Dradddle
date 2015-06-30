@@ -8,9 +8,9 @@ import com.hpedrorodrigues.dradddle.R
 
 public class PopularShotsHolder : RecyclerView.ViewHolder {
 
-    private var view: View? = null
-    private var imageView: ImageView? = null
-    private var textView: TextView? = null
+    private var view: View
+    private var imageView: ImageView
+    private var textView: TextView
 
     constructor(view: View) : super(view) {
         this.view = view;
@@ -18,19 +18,19 @@ public class PopularShotsHolder : RecyclerView.ViewHolder {
         this.textView = view.findViewById(R.id.text) as TextView
     }
 
-    override fun toString(): String? {
-        return "${super.toString()} -> ${textView!!.getText()}"
+    override fun toString(): String {
+        return "${super.toString()} -> Text: ${textView.getText()}"
     }
 
-    public fun getView(): View? {
+    public fun getView(): View {
         return view
     }
 
-    public fun getImageView(): ImageView? {
+    public fun getImageView(): ImageView {
         return imageView
     }
 
-    public fun getTextVew(): TextView? {
+    public fun getTextVew(): TextView {
         return textView
     }
 }

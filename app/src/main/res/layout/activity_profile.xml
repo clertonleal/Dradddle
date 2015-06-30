@@ -30,7 +30,8 @@
                 android:scaleType="centerCrop"
                 android:src="@mipmap/navigation_menu_background"
                 android:fitsSystemWindows="true"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/app_name"/>
 
             <include
                 android:id="@+id/toolbar"
