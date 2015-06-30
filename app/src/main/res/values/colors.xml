@@ -10,7 +10,10 @@
 
     <color name="screens">#F5F5F5</color>
 
-    <color name="drawer_item_text">#424242</color>
+    <color name="dark_gray">#616161</color>
+    <color name="light_gray">#BDBDBD</color>
+
+    <color name="drawer_item_text">@color/dark_gray</color>
     <color name="drawer_item_text_checked">@color/primary</color>
 
 </resources>

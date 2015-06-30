@@ -19,7 +19,7 @@ import kotlin.platform.platformStatic
 public class PopularShotsFragment : BaseShotsFragment() {
 
     companion object {
-        platformStatic val DISPLAY_ITEMS_COUNT = 20
+        platformStatic val DISPLAY_ITEMS_COUNT = 10
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

@@ -18,14 +18,13 @@ public class PopularShotsAdapter() : RecyclerView.Adapter<PopularShotsHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PopularShotsHolder? {
-        return PopularShotsHolder(inflater!!.inflate(R.layout.popular_shots_item, parent, false))
+        return PopularShotsHolder(inflater!!.inflate(R.layout.shots_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularShotsHolder, position: Int) {
-        holder.getTextVew().setText(R.string.app_name)
     }
 
     override fun getItemCount(): Int {
-        return 200
+        return 60
     }
 }
