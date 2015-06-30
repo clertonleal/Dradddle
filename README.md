@@ -2,7 +2,7 @@
 
 A simple Android project, written in Kotlin language, to consume the [Dribble API](http://developer.dribbble.com/).
 
-**This project uses the following libraries:**
+## Libraries
 
 - [Dagger v2.0](http://square.github.io/dagger/) to dependency injection
 
@@ -23,3 +23,16 @@ A simple Android project, written in Kotlin language, to consume the [Dribble AP
 - [CircleImageViewv v1.2.1](https://github.com/hdodenhof/CircleImageView)
 
 - [ImageViewZoom v2.1.1](https://github.com/sephiroth74/ImageViewZoom)
+
+## Issues
+
+For questions, bug reports, improve documentation, and feature request please
+search through existing
+[issue](https://github.com/hpedrorodrigues/dradddle/issues) and if you don't
+find and answer open a new one [here](https://github.com/hpedrorodrigues/dradddle/issues/new).
+If you need support send me an [email](mailto:hs.pedro.rodrigues@gmail.com). You can also
+contact [me](https://github.com/hpedrorodrigues) for any non public concerns.
+
+## License
+
+Sand is released under the MIT license. See [LICENSE](./LICENSE) for details.
