@@ -16,6 +16,8 @@ import dagger.Provides;
 
 import com.hpedrorodrigues.dradddle.application.BaseApplication
 import com.hpedrorodrigues.dradddle.constant.DradddleConstants
+import com.hpedrorodrigues.dradddle.network.DradddleNetwork
+import retrofit.RestAdapter
 import java.util.concurrent.TimeUnit
 
 Module public class DradddleModule(private val application: BaseApplication) {
@@ -24,12 +26,21 @@ Module public class DradddleModule(private val application: BaseApplication) {
         return application.getBaseContext()
     }
 
-    Provides fun providePreferenceManager(context: Context): SharedPreferences {
-        return context.getSharedPreferences(DradddleConstants.PREFERENCES, 0)
+    Provides fun providePreferenceManager(): SharedPreferences {
+        return application.getSharedPreferences(DradddleConstants.PREFERENCES, 0)
     }
 
     Provides fun provideConnectivityManager(): ConnectivityManager {
         return application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    }
+
+    Provides Singleton fun provideRestAdapter(): RestAdapter {
+        return RestAdapter.Builder().setEndpoint(DradddleConstants.DRIBBBLE_ENDPOINT).build()
+    }
+
+    Provides
+    fun provideMovieNetwork(restAdapter: RestAdapter): DradddleNetwork {
+        return restAdapter.create<DradddleNetwork>(javaClass<DradddleNetwork>())
     }
 
     Provides Singleton fun provideLocationManager(): LocationManager {
@@ -48,8 +59,8 @@ Module public class DradddleModule(private val application: BaseApplication) {
         return okHttpClient
     }
 
-    Provides fun provideResources(context: Context): Resources {
-        return context.getResources()
+    Provides fun provideResources(): Resources {
+        return application.getResources()
     }
 
     Provides fun provideLayoutInflater(context: Context): LayoutInflater {

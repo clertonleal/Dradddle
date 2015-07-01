@@ -8,8 +8,8 @@ import com.hpedrorodrigues.dradddle.view.activity.AboutActivity
 import com.hpedrorodrigues.dradddle.view.activity.MainActivity
 import com.hpedrorodrigues.dradddle.view.activity.ProfileActivity
 import com.hpedrorodrigues.dradddle.view.activity.SettingsActivity
-import com.hpedrorodrigues.dradddle.view.adapter.PopularShotsAdapter
-import com.hpedrorodrigues.dradddle.view.adapter.ShotsPagerAdapter
+import com.hpedrorodrigues.dradddle.view.adapter.ShotsAdapter
+import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
 import com.hpedrorodrigues.dradddle.view.fragment.shot.DebutsShotsFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.PopularShotsFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.RecentShotsFragment
@@ -29,6 +29,6 @@ public interface DradddleComponent {
     public fun inject(debutsShotsFragment: DebutsShotsFragment)
     public fun inject(recentShotsFragment: RecentShotsFragment)
 
-    public fun inject(shotsPagerAdapter: ShotsPagerAdapter)
-    public fun inject(popularShotsAdapter: PopularShotsAdapter)
+    public fun inject(shotsFragmentPagerAdapter: ShotsFragmentPagerAdapter)
+    public fun inject(shotsAdapter: ShotsAdapter)
 }

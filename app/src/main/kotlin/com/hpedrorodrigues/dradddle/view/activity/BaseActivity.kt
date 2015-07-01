@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.hpedrorodrigues.dradddle.R
@@ -14,14 +15,9 @@ import com.hpedrorodrigues.dradddle.application.DradddleApplication
 import com.hpedrorodrigues.dradddle.dagger.DradddleComponent
 import com.hpedrorodrigues.dradddle.enumeration.AnimationsInfo
 import com.hpedrorodrigues.dradddle.enumeration.SupportedAnimations
-import kotlin.platform.platformStatic
+import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 
 public abstract class BaseActivity : AppCompatActivity() {
-
-    companion object {
-
-        platformStatic protected val ARG_ANIMATION: String = "arg_animation"
-    }
 
     protected abstract fun injectMembers()
 
@@ -32,8 +28,8 @@ public abstract class BaseActivity : AppCompatActivity() {
         injectMembers()
 
         val args = getIntent()
-        if (args != null && args.hasExtra(ARG_ANIMATION)) {
-            val animationOrder = args.getIntExtra(ARG_ANIMATION, 0)
+        if (args != null && args.hasExtra(DradddleConstants.ARG_ANIMATION)) {
+            val animationOrder = args.getIntExtra(DradddleConstants.ARG_ANIMATION, 0)
             currentAnimation = SupportedAnimations.find(animationOrder)
         }
     }
@@ -155,7 +151,7 @@ public abstract class BaseActivity : AppCompatActivity() {
     private fun <A : BaseActivity> start(activityClass: Class<A>, animation: SupportedAnimations) {
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val intent = Intent(this, activityClass)
-        intent.putExtra(ARG_ANIMATION, reverseAnimation.getOrder())
+        intent.putExtra(DradddleConstants.ARG_ANIMATION, reverseAnimation.getOrder())
 
         startActivity(intent)
         overrideTransition(animation)
@@ -165,7 +161,7 @@ public abstract class BaseActivity : AppCompatActivity() {
             activityClass: Class<A>, requestCode: Int, animation: SupportedAnimations) {
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val intent = Intent(this, activityClass)
-        intent.putExtra(ARG_ANIMATION, reverseAnimation.getOrder())
+        intent.putExtra(DradddleConstants.ARG_ANIMATION, reverseAnimation.getOrder())
 
         startActivityForResult(intent, requestCode)
         overrideTransition(animation)
@@ -176,7 +172,7 @@ public abstract class BaseActivity : AppCompatActivity() {
 
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val bundle = if (fragment.getArguments() == null) Bundle() else fragment.getArguments()
-        bundle.putInt(ARG_ANIMATION, reverseAnimation.getOrder())
+        bundle.putInt(DradddleConstants.ARG_ANIMATION, reverseAnimation.getOrder())
         fragment.setArguments(bundle)
 
         when (animation) {

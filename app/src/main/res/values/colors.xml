@@ -2,14 +2,15 @@
 
 <resources>
 
-    <color name="primary">#E91E63</color>
-    <color name="primary_dark">#880E4F</color>
-    <color name="accent">#9C27B0</color>
-    <color name="accent_translucent">#CE93D8</color>
+    <color name="primary">#EC407A</color>
+    <color name="primary_dark">#F06292</color>
+    <color name="accent">#F8BBD0</color>
+    <color name="accent_translucent">#FCE4EC</color>
     <color name="accent_bright">#E91E63</color>
 
     <color name="screens">#F5F5F5</color>
 
+    <color name="black">#212121</color>
     <color name="dark_gray">#616161</color>
     <color name="light_gray">#BDBDBD</color>
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screens"
-    app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+    android:clipToPadding="false"
     app:recyclerClipToPadding="false"
     app:recyclerPadding="5dp"
     android:id="@+id/recycler_view"/>

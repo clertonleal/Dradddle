@@ -4,12 +4,15 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
+import android.support.design.widget.FloatingActionButton
 
 import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.view.MenuItemCompat
+import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 
@@ -23,15 +26,11 @@ import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.HOME
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.PROFILE
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.ABOUT
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.SETTINGS
-import com.hpedrorodrigues.dradddle.view.adapter.ShotsPagerAdapter
+import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
 import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
-import kotlinx.android.synthetic.activity_main.toolbar
 import kotlinx.android.synthetic.activity_main.drawerLayout
 import kotlinx.android.synthetic.activity_main.navigationView
-import kotlinx.android.synthetic.activity_main.pager
-import kotlinx.android.synthetic.activity_main.tabs
-import kotlinx.android.synthetic.activity_main.fabDone
 
 import java.util.HashMap
 
@@ -59,14 +58,17 @@ public class MainActivity : BaseActivity() {
     protected var drawerToggle: ActionBarDrawerToggle? = null
     protected var currentItem: DrawerItem? = null
     protected var searchView: DradddleSearchView? = null
+    protected var toolbar: Toolbar? = null
+    protected var pager: ViewPager? = null
+    protected var tabs: TabLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar as Toolbar)
+        bindViews()
+        setSupportActionBar(toolbar)
         configNavigationView()
         configViewPager()
-        configFabDone()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -152,15 +154,8 @@ public class MainActivity : BaseActivity() {
     }
 
     protected fun configViewPager() {
-        pager.setAdapter(ShotsPagerAdapter(getSupportFragmentManager()))
-        tabs.setupWithViewPager(pager)
-    }
-
-    protected fun configFabDone() {
-        fabDone.setOnClickListener { view ->
-            Snackbar.make(view, "Done", Snackbar.LENGTH_LONG)
-                    .setAction(android.R.string.ok, {}).show()
-        }
+        pager!!.setAdapter(ShotsFragmentPagerAdapter(getSupportFragmentManager()))
+        tabs!!.setupWithViewPager(pager)
     }
 
     protected fun isDrawerOpened(): Boolean {
@@ -186,5 +181,11 @@ public class MainActivity : BaseActivity() {
             }
             currentItem = item
         }, DRAWER_REPLACE_SCREEN_DELAY)
+    }
+
+    private fun bindViews() {
+        toolbar = findViewById(R.id.toolbar) as Toolbar
+        pager = findViewById(R.id.pager) as ViewPager
+        tabs = findViewById(R.id.tabs) as TabLayout
     }
 }

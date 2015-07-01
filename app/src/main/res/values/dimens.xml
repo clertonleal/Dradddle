@@ -3,7 +3,7 @@
 <resources>
 
     <dimen name="drawer_width">300dp</dimen>
-    <dimen name="drawer_profile_layout_height">168dp</dimen>
+    <dimen name="drawer_profile_layout_height">200dp</dimen>
     <dimen name="drawer_avatar_layout_padding_top">24dp</dimen>
     <dimen name="drawer_avatar_layout_padding_bottom">8dp</dimen>
     <dimen name="drawer_avatar_layout_padding">16dp</dimen>
@@ -16,9 +16,9 @@
 
     <dimen name="default_size">48dp</dimen>
 
-    <integer name="fragments_transition_duration">400</integer>
+    <integer name="animations_duration">300</integer>
 
-    <dimen name="default_app_bar_height">192dp</dimen>
+    <dimen name="default_app_bar_height">256dp</dimen>
     <dimen name="about_app_bar_height">326dp</dimen>
     <dimen name="card_margin">16dp</dimen>
 
@@ -32,5 +32,7 @@
     <dimen name="status_bar_height">25dp</dimen>
 
     <dimen name="fab_compat_margin">16dp</dimen>
+
+    <dimen name="shot_icons_height">25dp</dimen>
 
 </resources>

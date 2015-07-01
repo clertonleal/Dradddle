@@ -7,6 +7,6 @@
     <alpha
         android:fromAlpha="1.0"
         android:toAlpha="0.0"
-        android:duration="@integer/fragments_transition_duration" />
+        android:duration="@integer/animations_duration" />
 
 </set>
