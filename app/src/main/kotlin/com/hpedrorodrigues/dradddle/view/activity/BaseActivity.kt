@@ -16,6 +16,7 @@ import com.hpedrorodrigues.dradddle.dagger.DradddleComponent
 import com.hpedrorodrigues.dradddle.enumeration.AnimationsInfo
 import com.hpedrorodrigues.dradddle.enumeration.SupportedAnimations
 import com.hpedrorodrigues.dradddle.constant.DradddleConstants
+import com.hpedrorodrigues.dradddle.extension.*
 
 public abstract class BaseActivity : AppCompatActivity() {
 
@@ -57,23 +58,11 @@ public abstract class BaseActivity : AppCompatActivity() {
 
     override fun invalidateOptionsMenu() {
         super.invalidateOptionsMenu()
-        closeKeyBoard()
+        closeKeyboard()
     }
 
     protected fun dradddleComponent(): DradddleComponent {
         return DradddleApplication.component()
-    }
-
-    protected fun openKeyBoard() {
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-    }
-
-    protected fun closeKeyBoard() {
-        val view = getCurrentFocus();
-        if (view != null) {
-            (getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                    .hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS)
-        }
     }
 
     protected fun <A : BaseActivity> startWithFade(activityClass: Class<A>) {

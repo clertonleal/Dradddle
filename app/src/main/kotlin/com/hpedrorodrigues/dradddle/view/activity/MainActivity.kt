@@ -22,15 +22,15 @@ import android.view.View
 
 import com.hpedrorodrigues.dradddle.R
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.HOME
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.PROFILE
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.ABOUT
-import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.SETTINGS
+import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.*
 import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
 import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
 import kotlinx.android.synthetic.activity_main.drawerLayout
 import kotlinx.android.synthetic.activity_main.navigationView
+import kotlinx.android.synthetic.activity_main.toolbar
+import kotlinx.android.synthetic.activity_main.pager
+import kotlinx.android.synthetic.activity_main.tabs
 
 import java.util.HashMap
 
@@ -58,14 +58,10 @@ public class MainActivity : BaseActivity() {
     protected var drawerToggle: ActionBarDrawerToggle? = null
     protected var currentItem: DrawerItem? = null
     protected var searchView: DradddleSearchView? = null
-    protected var toolbar: Toolbar? = null
-    protected var pager: ViewPager? = null
-    protected var tabs: TabLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        bindViews()
         setSupportActionBar(toolbar)
         configNavigationView()
         configViewPager()
@@ -181,11 +177,5 @@ public class MainActivity : BaseActivity() {
             }
             currentItem = item
         }, DRAWER_REPLACE_SCREEN_DELAY)
-    }
-
-    private fun bindViews() {
-        toolbar = findViewById(R.id.toolbar) as Toolbar
-        pager = findViewById(R.id.pager) as ViewPager
-        tabs = findViewById(R.id.tabs) as TabLayout
     }
 }

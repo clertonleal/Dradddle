@@ -1,24 +1,59 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /home/hpedrorodrigues/SDKs/SDK - Android/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Proguard settings
 
-# Add any project specific keep options here:
+# Manter a classe R
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Manter enum classes
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+# Manter classes serializáveis
+-keepnames class * implements java.io.Serializable
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# Manter código fonte local
+-keep class com.hpedrorodrigues.dradddle.** { *; }
 
 # Retrofit
-
 -dontwarn retrofit.**
 -keep class retrofit.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
+
+## Support library v4
+-dontwarn android.support.v4.app.**
+-dontwarn android.support.v4.view.**
+-dontwarn android.support.v4.widget.**
+-dontwarn android.support.v7.media.**
+
+# OKHttp
+-dontwarn com.squareup.okhttp.**
+
+# Okio
+-dontwarn okio.**
+
+# RxAndroid
+-dontwarn rx.**
+
+# SuperRecyclerView
+-dontwarn com.malinskiy.superrecyclerview.**
+
+# Support Design
+-keep class android.support.design.widget.** { *; }
+-keep interface android.support.design.widget.** { *; }
+-dontwarn android.support.design.**
+
+# Evitar warnings causados pelo sdk do kotlin
+-dontwarn kotlin.**

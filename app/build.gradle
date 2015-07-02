@@ -1,6 +1,3 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-
 buildscript {
 
     ext.kotlin_version = '0.1-SNAPSHOT'
@@ -8,9 +5,8 @@ buildscript {
     repositories {
 
         jcenter()
-        maven {
-            url 'http://oss.sonatype.org/content/repositories/snapshots'
-        }
+        maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url "https://jitpack.io" }
     }
 
     dependencies {
@@ -23,15 +19,22 @@ buildscript {
 repositories {
 
     jcenter()
-    maven {
-        url 'http://oss.sonatype.org/content/repositories/snapshots'
-    }
+    maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url "https://jitpack.io" }
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
 
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
+
+    lintOptions {
+
+        abortOnError false
+    }
 
     defaultConfig {
 
@@ -39,20 +42,20 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
-        multiDexEnabled true
-    }
-
-    lintOptions {
-
-        abortOnError false
+        versionName "0.8.0"
     }
 
     buildTypes {
 
-        release {
+        debug {
 
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -69,14 +72,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.github.yoavst:androidKotlin:1.5.1'
     compile 'com.android.support:design:22.2.0'
     compile 'com.android.support:palette-v7:22.2.0'
     compile 'com.android.support:cardview-v7:22.2.0'
-    compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.malinskiy:superrecyclerview:1.1.0'
+    compile 'com.android.support:recyclerview-v7:22.2.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'io.reactivex:rxandroid:0.25.0'

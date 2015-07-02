@@ -2,16 +2,6 @@
 
 <resources>
 
-    <style name="AppTheme.Toolbar" parent="BaseTheme.Toolbar"/>
-    <style name="BaseTheme.Toolbar" parent="AppTheme">
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="android:fitsSystemWindows">true</item>
-    </style>
-
     <style name="AppTheme.SearchView" parent="BaseTheme.SearchView"/>
     <style name="BaseTheme.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="searchIcon">@mipmap/ic_action_search</item>
