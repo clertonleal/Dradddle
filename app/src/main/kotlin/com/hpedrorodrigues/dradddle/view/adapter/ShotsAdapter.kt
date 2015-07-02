@@ -26,11 +26,6 @@ public class ShotsAdapter() : RecyclerView.Adapter<ShotsHolder>() {
     }
 
     override fun onBindViewHolder(holder: ShotsHolder, position: Int) {
-        holder.authorName.setText("Pedro")
-        holder.viewsCount.setText("122")
-        holder.likesCount.setText("122")
-        holder.commentsCount.setText("122")
-        holder.postingDate.setText("31 jun 20153")
     }
 
     override fun getItemCount(): Int {
