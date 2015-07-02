@@ -1,0 +1,3 @@
+# sudo apt-get -y install exiftool
+# git config diff.exif.textconv exiftool
+*.png diff=exif
