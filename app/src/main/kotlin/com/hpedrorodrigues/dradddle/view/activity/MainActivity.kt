@@ -21,6 +21,7 @@ import android.view.MenuItem
 import android.view.View
 
 import com.hpedrorodrigues.dradddle.R
+import com.hpedrorodrigues.dradddle.constant.RequestCode
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.*
 import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
@@ -41,11 +42,6 @@ public class MainActivity : BaseActivity() {
     companion object {
 
         platformStatic val DRAWER_REPLACE_SCREEN_DELAY = 400L
-
-        platformStatic val REQUEST_PROFILE = 1
-        platformStatic val REQUEST_ABOUT = 2
-        platformStatic val REQUEST_SETTINGS = 3
-
         platformStatic val classes = object: HashMap<DrawerItem, Class<out BaseActivity>>() {
             init {
                 put(DrawerItem.PROFILE, javaClass<ProfileActivity>())
@@ -70,7 +66,7 @@ public class MainActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
-            REQUEST_PROFILE, REQUEST_ABOUT, REQUEST_SETTINGS ->
+            RequestCode.REQUEST_PROFILE, RequestCode.REQUEST_ABOUT, RequestCode.REQUEST_SETTINGS ->
                 getMenuItem(R.id.drawer_home).setChecked(true)
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -171,9 +167,9 @@ public class MainActivity : BaseActivity() {
         Handler().postDelayed({
             when (item) {
                 HOME -> {}
-                PROFILE -> startWithResultAndFade(classes.get(PROFILE), REQUEST_PROFILE)
-                ABOUT -> startWithResultAndFade(classes.get(ABOUT), REQUEST_ABOUT)
-                SETTINGS -> startWithResultAndFade(classes.get(SETTINGS), REQUEST_SETTINGS)
+                PROFILE -> startWithResultAndFade(classes.get(PROFILE), RequestCode.REQUEST_PROFILE)
+                ABOUT -> startWithResultAndFade(classes.get(ABOUT), RequestCode.REQUEST_ABOUT)
+                SETTINGS -> startWithResultAndFade(classes.get(SETTINGS), RequestCode.REQUEST_SETTINGS)
                 else -> throw IllegalArgumentException("Invalid item $item")
             }
             currentItem = item

@@ -92,19 +92,19 @@
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:id="@+id/linearLayout3">
+                android:id="@+id/viewsLayout">
 
                 <ImageView
                     android:layout_width="@dimen/shot_icons_height"
                     android:layout_height="@dimen/shot_icons_height"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:src="@mipmap/ic_eye"
                     android:contentDescription="@string/app_name"/>
 
                 <TextView
                     android:id="@+id/views_count"
-                    android:layout_width="45dp"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:text="1111"
                     android:layout_marginLeft="5dp"
@@ -120,9 +120,9 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/linearLayout3"
-                android:layout_toEndOf="@+id/linearLayout3"
-                android:id="@+id/linearLayout4">
+                android:layout_toRightOf="@+id/viewsLayout"
+                android:layout_toEndOf="@+id/viewsLayout"
+                android:id="@+id/likesLayout">
 
                 <ImageView
                     android:layout_width="@dimen/shot_icons_height"
@@ -134,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/likes_count"
-                    android:layout_width="45dp"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:text="1111"
                     android:layout_marginLeft="5dp"
@@ -149,11 +149,11 @@
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical|start"
                 android:orientation="horizontal"
-                android:id="@+id/linearLayout2"
+                android:id="@+id/commentsLayout"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/linearLayout4"
-                android:layout_toLeftOf="@+id/linearLayout"
-                android:layout_toStartOf="@+id/linearLayout">
+                android:layout_toRightOf="@+id/likesLayout"
+                android:layout_toLeftOf="@+id/postingDateLayout"
+                android:layout_toStartOf="@+id/postingDateLayout">
 
                 <ImageView
                     android:layout_width="@dimen/shot_icons_height"
@@ -165,7 +165,7 @@
 
                 <TextView
                     android:id="@+id/comments_count"
-                    android:layout_width="45dp"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:text="1111"
                     android:layout_marginLeft="5dp"
@@ -182,9 +182,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"
-                android:id="@+id/linearLayout">
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:id="@+id/postingDateLayout">
 
                 <TextView
                     android:id="@+id/posting_date"
@@ -194,6 +194,7 @@
                     android:gravity="center_vertical|end"
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
+                    android:textStyle="italic"
                     style="@style/AppTheme.TextView"
                     android:text="31 jun 2015"/>
 

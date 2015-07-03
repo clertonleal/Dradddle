@@ -52,6 +52,11 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
         notifyDataSetChanged()
     }
 
+    public fun removeShot(position: Int) {
+        shots.drop(position)
+        notifyDataSetChanged()
+    }
+
     public fun cleanShots() {
         shots.dropWhile { true }
         notifyDataSetChanged()

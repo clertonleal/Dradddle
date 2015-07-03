@@ -25,13 +25,12 @@ public abstract class BaseShotsFragment : BaseFragment() {
 
     companion object {
 
-        platformStatic val DISPLAY_ITEMS_COUNT = 10
+        platformStatic val DISPLAY_ITEMS_COUNT = 15
         platformStatic val FIRST_PAGE_SHOTS = 1
     }
 
     private var superRecyclerView: SuperRecyclerView? = null
     private var swipeLayout: SwipeRefreshLayout? = null
-    private var emptyView: LinearLayout? = null
 
     var dradddleNetwork: DradddleNetwork? = null
         @Inject set
@@ -50,32 +49,25 @@ public abstract class BaseShotsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        superRecyclerView = view.findViewById(R.id.superRecyclerView) as SuperRecyclerView
-        emptyView = view.findViewById(R.id.emptyView) as LinearLayout
+        superRecyclerView = view as SuperRecyclerView
         swipeLayout = superRecyclerView!!.getSwipeToRefresh()
 
-        configSwipeLayout()
         configSuperRecyclerView()
 
         if (connectionService!!.hasConnection()) {
             loadPage(FIRST_PAGE_SHOTS)
-        } else {
-            showEmptyView()
         }
     }
 
-    private fun configSwipeLayout() {
-        swipeLayout!!.setColorSchemeResources(
+    private fun configSuperRecyclerView() {
+        superRecyclerView!!.setLayoutManager(LinearLayoutManager(superRecyclerView!!.getContext()))
+        superRecyclerView!!.setAdapter(shotsAdapter)
+
+        superRecyclerView!!.setRefreshingColorResources(
                 R.color.primary,
                 R.color.primary_dark,
                 R.color.accent_translucent,
                 R.color.dark_gray)
-    }
-
-    private fun configSuperRecyclerView() {
-        superRecyclerView!!.getRecyclerView().setHasFixedSize(true)
-        superRecyclerView!!.setLayoutManager(LinearLayoutManager(superRecyclerView!!.getContext()))
-        superRecyclerView!!.setAdapter(shotsAdapter)
 
         superRecyclerView!!.setRefreshListener({
             shotsAdapter!!.cleanShots()
@@ -86,32 +78,32 @@ public abstract class BaseShotsFragment : BaseFragment() {
             numberOfItems: Int, numberBeforeMore: Int, currentItemPos: Int ->
             loadPage(numberOfItems + 1 % DISPLAY_ITEMS_COUNT)
         }, DISPLAY_ITEMS_COUNT)
-    }
 
-    private fun showEmptyView() {
-        emptyView!!.setVisibility(View.VISIBLE)
-        superRecyclerView!!.setVisibility(View.GONE)
-    }
+        superRecyclerView!!.setupSwipeToDismiss(object: SwipeDismissRecyclerViewTouchListener.DismissCallbacks {
 
-    private fun showShotsView() {
-        emptyView!!.setVisibility(View.GONE)
-        superRecyclerView!!.setVisibility(View.VISIBLE)
+            override fun canDismiss(position: Int): Boolean {
+                return true
+            }
+
+            override fun onDismiss(recyclerView: RecyclerView, reverseSortedPositions: kotlin.IntArray) {
+                reverseSortedPositions.forEach { shotsAdapter!!.removeShot(it) }
+            }
+        })
     }
 
     private fun loadPage(pageNumber: Int) {
-        val subscription = dradddleNetwork!!.retrievePage(pageNumber)
+        val subscription = dradddleNetwork!!
+                .retrievePage(pageNumber)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext({showEmptyView()})
-                .subscribe({ page ->
-                    showShotsView()
-                    shotsAdapter!!.addPage(page)
-                    if (swipeLayout!!.isEnabled()) {
-                        swipeLayout!!.setRefreshing(false)
-                    }
-                }, {
-                    e(it.getMessage()!!)
+                .subscribe({ shotsAdapter!!.addPage(it) }, { e(it.getMessage()!!) }, {
+                    swipeLayout!!.setRefreshing(false)
+                    hideLayoutMoreProgress()
                 })
         compositeSubscription.add(subscription)
+    }
+
+    private fun hideLayoutMoreProgress() {
+        superRecyclerView!!.getMoreProgressView().setVisibility(View.GONE)
     }
 }

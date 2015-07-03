@@ -8,19 +8,18 @@ A simple Android project, written in Kotlin language, to consume the [Dribble AP
 
 ## Libraries
 
-- [Dagger v2.0](http://square.github.io/dagger/) to dependency injection
-- [Android Design v22.2.0](http://developer.android.com/tools/support-library/index.html) for some Widgets and Layouts
-- [Android Pallete v22.2.0](https://developer.android.com/reference/android/support/v7/graphics/Palette.html) for obtaining color images
-- [Play Services v7.5.0](https://developers.google.com/android/guides/overview) to some features
-- [SuperRecyclerView v1.1.0](https://github.com/Malinskiy/SuperRecyclerView) to control [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html)
-- [Picasso v2.4.0](http://square.github.io/picasso/) to asynchronous download of image and cache
-- [OKHttp v2.1.0](http://square.github.io/okhttp/) and [Retrofit v1.9.0](http://square.github.io/retrofit/) to asynchronous requests
-- [GSON v2.3.1](https://github.com/google/gson) to convert a JSON string to an equivalent Java object
-- [Javax Annotation v10.0-b28](http://mvnrepository.com/artifact/org.glassfish/javax.annotation/10.0-b28) to common annotations for the Java
-- [RxAndroid v0.25.0](https://github.com/ReactiveX/RxAndroid)
-- [CardView v22.2.0](https://developer.android.com/reference/android/support/v7/widget/CardView.html)
-- [CircleImageViewv v1.2.1](https://github.com/hdodenhof/CircleImageView)
-- [ImageViewZoom v2.1.1](https://github.com/sephiroth74/ImageViewZoom)
+- [Dagger](http://square.github.io/dagger/)
+- [Android Design](http://developer.android.com/tools/support-library/index.html)
+- [Android Pallete](https://developer.android.com/reference/android/support/v7/graphics/Palette.html)
+- [SuperRecyclerView](https://github.com/Malinskiy/SuperRecyclerView) and [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html)
+- [Picasso](http://square.github.io/picasso/)
+- [OKHttp](http://square.github.io/okhttp/) and [Retrofit](http://square.github.io/retrofit/)
+- [GSON](https://github.com/google/gson)
+- [Javax Annotation](http://mvnrepository.com/artifact/org.glassfish/javax.annotation/10.0-b28)
+- [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [CardView](https://developer.android.com/reference/android/support/v7/widget/CardView.html)
+- [CircleImageView](https://github.com/hdodenhof/CircleImageView)
+- [ImageViewZoom](https://github.com/sephiroth74/ImageViewZoom)
 
 ## Issues
 
