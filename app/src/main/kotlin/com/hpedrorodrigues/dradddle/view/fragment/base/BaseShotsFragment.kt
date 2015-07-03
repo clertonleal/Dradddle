@@ -24,13 +24,14 @@ import kotlin.platform.platformStatic
 public abstract class BaseShotsFragment : BaseFragment() {
 
     companion object {
-
         platformStatic val DISPLAY_ITEMS_COUNT = 15
-        platformStatic val FIRST_PAGE_SHOTS = 1
+        platformStatic val FIRST_PAGE_SHOTS = 0
     }
 
     private var superRecyclerView: SuperRecyclerView? = null
     private var swipeLayout: SwipeRefreshLayout? = null
+
+    private var actualPage: Int = FIRST_PAGE_SHOTS
 
     var dradddleNetwork: DradddleNetwork? = null
         @Inject set
@@ -55,7 +56,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
         configSuperRecyclerView()
 
         if (connectionService!!.hasConnection()) {
-            loadPage(FIRST_PAGE_SHOTS)
+            loadNextPage(actualPage)
         }
     }
 
@@ -71,12 +72,13 @@ public abstract class BaseShotsFragment : BaseFragment() {
 
         superRecyclerView!!.setRefreshListener({
             shotsAdapter!!.cleanShots()
-            loadPage(FIRST_PAGE_SHOTS)
+            actualPage = FIRST_PAGE_SHOTS
+            loadNextPage(actualPage)
         })
 
         superRecyclerView!!.setupMoreListener({
             numberOfItems: Int, numberBeforeMore: Int, currentItemPos: Int ->
-            loadPage(numberOfItems + 1 % DISPLAY_ITEMS_COUNT)
+            loadNextPage(actualPage)
         }, DISPLAY_ITEMS_COUNT)
 
         superRecyclerView!!.setupSwipeToDismiss(object: SwipeDismissRecyclerViewTouchListener.DismissCallbacks {
@@ -91,7 +93,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
         })
     }
 
-    private fun loadPage(pageNumber: Int) {
+    private fun loadNextPage(pageNumber: Int) {
         val subscription = dradddleNetwork!!
                 .retrievePage(pageNumber)
                 .subscribeOn(Schedulers.io())
@@ -99,6 +101,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
                 .subscribe({ shotsAdapter!!.addPage(it) }, { e(it.getMessage()!!) }, {
                     swipeLayout!!.setRefreshing(false)
                     hideLayoutMoreProgress()
+                    actualPage++
                 })
         compositeSubscription.add(subscription)
     }
