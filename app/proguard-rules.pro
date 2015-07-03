@@ -1,17 +1,17 @@
 # Proguard settings
 
-# Manter a classe R
+# Preservar a classe R
 -keepclassmembers class **.R$* {
     public static <fields>;
 }
 
-# Manter enum classes
+# Preservar enum classes
 -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
 
-# Manter classes serializáveis
+# Preservar classes serializáveis
 -keepnames class * implements java.io.Serializable
 -keepclassmembers class * implements java.io.Serializable {
     static final long serialVersionUID;
@@ -23,7 +23,7 @@
     java.lang.Object readResolve();
 }
 
-# Manter código fonte local
+# Preservar código fonte local
 -keep class com.hpedrorodrigues.dradddle.** { *; }
 
 # Retrofit
@@ -32,10 +32,12 @@
 -keepattributes Signature
 -keepattributes Exceptions
 
-## Support library v4
+# Support library v4
 -dontwarn android.support.v4.app.**
 -dontwarn android.support.v4.view.**
 -dontwarn android.support.v4.widget.**
+
+## Support library v7
 -dontwarn android.support.v7.media.**
 
 # OKHttp

@@ -17,12 +17,14 @@ import com.hpedrorodrigues.dradddle.enumeration.AnimationsInfo
 import com.hpedrorodrigues.dradddle.enumeration.SupportedAnimations
 import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 import com.hpedrorodrigues.dradddle.extension.*
+import rx.subscriptions.CompositeSubscription
 
 public abstract class BaseActivity : AppCompatActivity() {
 
-    protected abstract fun injectMembers()
+    protected var currentAnimation: SupportedAnimations = SupportedAnimations.FADE
+    protected var compositeSubscription: CompositeSubscription = CompositeSubscription()
 
-    private var currentAnimation: SupportedAnimations = SupportedAnimations.FADE
+    protected abstract fun injectMembers()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,11 @@ public abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    override fun invalidateOptionsMenu() {
+        super.invalidateOptionsMenu()
+        closeKeyboard()
+    }
+
     override fun finish() {
         super.finish()
         overrideTransitionWithReverse()
@@ -56,9 +63,9 @@ public abstract class BaseActivity : AppCompatActivity() {
         overrideTransitionWithReverse()
     }
 
-    override fun invalidateOptionsMenu() {
-        super.invalidateOptionsMenu()
-        closeKeyboard()
+    override fun onDestroy() {
+        unsubscribeSubscriptions()
+        super.onDestroy()
     }
 
     protected fun dradddleComponent(): DradddleComponent {
@@ -135,6 +142,11 @@ public abstract class BaseActivity : AppCompatActivity() {
 
     protected fun replaceFragmentWithSlideDown(containerId: Int, fragment: Fragment) {
         replaceFragment(containerId, fragment, SupportedAnimations.SLIDE_DOWN)
+    }
+
+    protected fun unsubscribeSubscriptions() {
+        compositeSubscription.unsubscribe()
+        compositeSubscription = CompositeSubscription()
     }
 
     private fun <A : BaseActivity> start(activityClass: Class<A>, animation: SupportedAnimations) {

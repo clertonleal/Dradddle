@@ -63,6 +63,7 @@ public class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        setTitle(R.string.home)
         configNavigationView()
         configViewPager()
     }

@@ -17,6 +17,11 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="AppTheme.TextView" parent="BaseTheme.TextView"/>
+    <style name="BaseTheme.TextView">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
     <style name="AppTheme.FAB" parent="BaseTheme.FAB"/>
     <style name="BaseTheme.FAB">
         <item name="android:layout_width">wrap_content</item>

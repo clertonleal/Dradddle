@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.malinskiy.superrecyclerview.SuperRecyclerView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/recycler_view"/>
+    android:orientation="vertical">
+
+    <com.malinskiy.superrecyclerview.SuperRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/superRecyclerView"/>
+
+    <LinearLayout
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/network_error"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="true"/>
+
+    </LinearLayout>
+
+</LinearLayout>

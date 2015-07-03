@@ -17,4 +17,6 @@
     <string name="recent">Recent</string>
     <string name="debuts">Debuts</string>
 
+    <string name="loading">Loading…</string>
+
 </resources>

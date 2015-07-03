@@ -18,9 +18,6 @@ import kotlin.platform.platformStatic
 
 public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    var context: Context? = null
-        @Inject set
-
     companion object {
 
         platformStatic val fragments = object: ArrayList<BaseFragment>() {
@@ -35,6 +32,9 @@ public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapt
     init {
         DradddleApplication.component().inject(this)
     }
+
+    var context: Context? = null
+        @Inject set
 
     override fun getItem(position: Int): Fragment {
         return when(Shots.find(position)) {
