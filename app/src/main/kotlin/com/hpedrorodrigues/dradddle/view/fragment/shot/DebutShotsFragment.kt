@@ -6,7 +6,7 @@ import com.hpedrorodrigues.dradddle.view.fragment.base.BaseShotsFragment
 import rx.Observable
 import javax.inject.Inject
 
-public class PopularShotsFragment : BaseShotsFragment() {
+public class DebutShotsFragment : BaseShotsFragment() {
 
     var dradddleNetwork: DradddleNetwork? = null
         @Inject set
@@ -16,6 +16,6 @@ public class PopularShotsFragment : BaseShotsFragment() {
     }
 
     override fun retrievePage(pageNumber: Int): Observable<Page> {
-        return dradddleNetwork!!.retrievePopularPage(pageNumber)
+        return dradddleNetwork!!.retrieveDebutPage(pageNumber)
     }
 }

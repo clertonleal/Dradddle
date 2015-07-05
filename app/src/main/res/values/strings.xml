@@ -13,6 +13,8 @@
     <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
 
+    <string name="without_connection">Sem conexão</string>
+
     <string name="popular">Popular</string>
     <string name="recent">Recente</string>
     <string name="debuts">Estréia</string>

@@ -3,45 +3,18 @@
 <resources>
 
     <style name="AppTheme" parent="BaseTheme">
-        <!-- enable translucent top status bar -->
-        <item name="android:windowTranslucentStatus">true</item>
-        <!-- enable translucent bottom status bar -->
-        <item name="android:windowTranslucentNavigation">true</item>
-        <!-- specify shared element transitions -->
+
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>
+
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-        <!-- shared elements not should use an overlay during transitions -->
         <item name="android:windowSharedElementsUseOverlay">false</item>
-        <!-- colorPrimary is used for the default action bar background -->
-        <item name="android:colorPrimary">@color/primary</item>
-        <!-- colorPrimaryDark is used for the status bar -->
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
-        <!-- colorAccent is used as the default value for colorControlActivated, which is used to tint widgets -->
-        <item name="android:colorAccent">@color/accent</item>
-        <!-- textColorPrimary is used for title of toolbar -->
-        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
-        <!-- textColorPrimary is used for widgets while they are no activated-->
-        <!--<item name="android:textColorSecondary">@color/primary_dark</item>-->
-        <!-- actionMenuTextColor is used for set a text color of menu items -->
-        <!--<item name="android:actionMenuTextColor">@android:color/white</item>-->
-        <!-- actionModeBackground is used for set a background color of action mode -->
-        <!--<item name="android:actionModeBackground">@color/primary_dark</item>-->
-        <!-- actionModeBackground is used for set a background color of action mode split -->
-        <!--<item name="android:actionModeSplitBackground">@android:color/white</item>-->
-        <!-- windowActionBar must be used for to use toolbar -->
-        <item name="android:windowActionBar">false</item>
-        <!-- windowActionModeOverlay is used for show action mode over the action bar instead of pushing it down -->
-        <!--<item name="android:windowActionModeOverlay">true</item>-->
-        <!-- searchViewStyle is used for create a custom search view -->
-        <item name="android:searchViewStyle">@style/AppTheme.SearchView</item>
-        <!-- used to hide the title bar -->
-        <item name="android:windowNoTitle">true</item>
-        <!-- change the default touch feedback color of ripple effect -->
-        <item name="android:colorControlHighlight">@color/accent_translucent</item> 
-        <!-- default color of background screens -->
-        <!--<item name="android:windowBackground">@color/screens</item>-->
-        <!-- enable window content transitions -->
         <item name="android:windowContentTransitions">true</item>
+
     </style>
 
 </resources>

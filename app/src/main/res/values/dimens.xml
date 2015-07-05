@@ -16,6 +16,8 @@
 
     <dimen name="default_size">48dp</dimen>
 
+    <dimen name="network_error_layout_height">75dp</dimen>
+
     <integer name="animations_duration">300</integer>
 
     <dimen name="default_app_bar_height">256dp</dimen>

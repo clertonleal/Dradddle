@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.malinskiy.superrecyclerview.SuperRecyclerView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/superRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_empty="@layout/empty_view"
-    app:layout_moreProgress="@layout/more_progress"
-    app:recyclerClipToPadding="false"
-    app:recyclerPadding="5dp"/>
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/network_error"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/network_error_layout_height"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/default_size"
+            android:layout_height="@dimen/default_size"
+            android:src="@mipmap/ic_network_off"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/without_connection"/>
+
+    </LinearLayout>
+
+    <com.malinskiy.superrecyclerview.SuperRecyclerView
+        android:id="@+id/super_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/empty_view"
+        app:layout_moreProgress="@layout/more_progress"
+        app:recyclerClipToPadding="false"
+        app:recyclerPadding="5dp"/>
+
+</LinearLayout>

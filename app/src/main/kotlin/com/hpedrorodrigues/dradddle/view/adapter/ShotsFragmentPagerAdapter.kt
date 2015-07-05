@@ -9,7 +9,7 @@ import com.hpedrorodrigues.dradddle.R
 import com.hpedrorodrigues.dradddle.application.DradddleApplication
 import com.hpedrorodrigues.dradddle.enumeration.Shots
 import com.hpedrorodrigues.dradddle.view.fragment.base.BaseFragment
-import com.hpedrorodrigues.dradddle.view.fragment.shot.DebutsShotsFragment
+import com.hpedrorodrigues.dradddle.view.fragment.shot.DebutShotsFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.PopularShotsFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.RecentShotsFragment
 import java.util.ArrayList
@@ -24,7 +24,7 @@ public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapt
             init {
                 add(PopularShotsFragment())
                 add(RecentShotsFragment())
-                add(DebutsShotsFragment())
+                add(DebutShotsFragment())
             }
         }
     }

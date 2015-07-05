@@ -5,13 +5,21 @@
     android:id="@+id/emptyView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
+    android:orientation="vertical"
     android:gravity="center">
 
     <ImageView
+        android:id="@+id/network_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:src="@mipmap/network_error"/>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="@dimen/default_size"
+        android:layout_height="@dimen/default_size"
+        android:visibility="gone"
+        android:indeterminate="true"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ A simple Android project, written in Kotlin language, to consume the [Dribble AP
 <!-- Download this example application [here](https://play.google.com/store/apps/details?id=com.hpedrorodrigues.dradddle). -->
 <!-- Rate this app -->
 <!-- Share this app -->
+<!-- [GifImageView](https://android-arsenal.com/details/1/1339) -->
 
 ## Libraries
 
@@ -13,7 +14,8 @@ A simple Android project, written in Kotlin language, to consume the [Dribble AP
 - [Android Pallete](https://developer.android.com/reference/android/support/v7/graphics/Palette.html)
 - [SuperRecyclerView](https://github.com/Malinskiy/SuperRecyclerView) and [RecyclerView](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html)
 - [Picasso](http://square.github.io/picasso/)
-- [OKHttp](http://square.github.io/okhttp/) and [Retrofit](http://square.github.io/retrofit/)
+- [OKHttp](http://square.github.io/okhttp/)
+- [Retrofit](http://square.github.io/retrofit/)
 - [GSON](https://github.com/google/gson)
 - [Javax Annotation](http://mvnrepository.com/artifact/org.glassfish/javax.annotation/10.0-b28)
 - [RxAndroid](https://github.com/ReactiveX/RxAndroid)

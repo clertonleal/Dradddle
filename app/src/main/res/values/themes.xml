@@ -4,28 +4,16 @@
 
     <style name="AppTheme" parent="BaseTheme"/>
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- colorPrimary is used for the default action bar background -->
+
         <item name="colorPrimary">@color/primary</item>
-        <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/primary_dark</item>
-        <!-- colorAccent is used as the default value for colorControlActivated, which is used to tint widgets -->
         <item name="colorAccent">@color/accent</item>
-        <!-- actionMenuTextColor is used for set a text color of menu items -->
-        <!--<item name="actionMenuTextColor">@android:color/white</item>-->
-        <!-- actionModeBackground is used for set a background color of action mode -->
-        <!--<item name="actionModeBackground">@color/primary_dark</item>-->
-        <!-- actionModeBackground is used for set a background color of action mode split -->
-        <!--<item name="actionModeSplitBackground">@android:color/white</item>-->
-        <!-- windowActionBar must be used for to use toolbar -->
-        <item name="windowActionBar">false</item>
-        <!-- windowActionModeOverlay is used for show action mode over the action bar instead of pushing it down -->
-        <!--<item name="windowActionModeOverlay">true</item>-->
-        <!-- searchViewStyle is used for create a custom search view -->
+
         <item name="searchViewStyle">@style/AppTheme.SearchView</item>
-        <!-- used to hide the title bar -->
+
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <!-- change the default touch feedback color of ripple effect -->
-        <item name="colorControlHighlight">@color/accent_translucent</item> 
+
     </style>
 
 </resources>

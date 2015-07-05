@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_width="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -51,7 +50,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/screens"
-        android:fitsSystemWindows="true"
         app:itemIconTint="@color/drawer_item"
         app:itemTextColor="@color/drawer_item"
         app:menu="@menu/drawer"/>

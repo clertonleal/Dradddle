@@ -9,9 +9,14 @@ import rx.Observable
 
 public interface DradddleNetwork {
 
-    GET("/shots/popular")
-    public fun retrievePage(Query("page") page: Int): Observable<Page>
+    GET("/shots/popular?sort=recent")
+    public fun retrievePopularPage(Query("page") page: Int): Observable<Page>
 
+    GET("/shots/debuts")
+    public fun retrieveRecentPage(Query("page") page: Int): Observable<Page>
+
+    GET("/shots/debuts?sort=recent")
+    public fun retrieveDebutPage(Query("page") page: Int): Observable<Page>
 
     GET("/shots/{dribbleId}")
     public fun retrieveShotById(Path("dribbleId") dribbleId: Long?): Observable<Shot>

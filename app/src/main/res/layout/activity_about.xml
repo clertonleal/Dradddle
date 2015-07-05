@@ -67,7 +67,6 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:fitsSystemWindows="true"/>
+        layout="@layout/toolbar"/>
 
 </FrameLayout>
