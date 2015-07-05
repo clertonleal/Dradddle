@@ -9,11 +9,11 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/network_error"
+        android:id="@+id/without_network"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/network_error"/>
+        android:src="@mipmap/without_network"/>
 
     <ProgressBar
         android:id="@+id/loading"

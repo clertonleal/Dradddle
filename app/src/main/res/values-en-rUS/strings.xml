@@ -4,21 +4,20 @@
 
     <string name="app_name">Dradddle</string>
     <string name="search">Search</string>
-
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
-
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="about">About</string>
     <string name="settings">Settings</string>
-
     <string name="without_connection">Without Connection</string>
-
     <string name="popular">Popular</string>
     <string name="recent">Recent</string>
     <string name="debuts">Debuts</string>
-
     <string name="loading">Loading…</string>
+    <string name="interface_settings">Interface settings</string>
+    <string name="about_the_app">About the app</string>
+    <string name="ask_to_exit">Ask to exit</string>
+    <string name="display_an_alert_to_exit">Display an alert asking if you want to leave</string>
 
 </resources>

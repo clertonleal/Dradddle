@@ -8,16 +8,16 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/network_error"
+        android:id="@+id/without_network"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/network_error_layout_height"
+        android:layout_height="80dp"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="@dimen/default_size"
-            android:layout_height="@dimen/default_size"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
             android:src="@mipmap/ic_network_off"/>
 
         <TextView

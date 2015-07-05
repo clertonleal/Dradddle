@@ -4,25 +4,21 @@
 
     <string name="app_name">Dradddle</string>
     <string name="search">Pesquisar</string>
-
     <string name="drawer_open">Menu aberto</string>
     <string name="drawer_close">Menu fechado</string>
-
     <string name="home">Início</string>
     <string name="profile">Perfil</string>
     <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
-
     <string name="without_connection">Sem conexão</string>
-
     <string name="popular">Popular</string>
     <string name="recent">Recente</string>
     <string name="debuts">Estréia</string>
-
     <string name="loading">Carregando…</string>
-
-    <string name="profile_name">Pedro Rodrigues</string>
-    <string name="profile_email">hs.pedro.rodrigues@gmail.com</string>
+    <string name="interface_settings">Configurações de interface</string>
+    <string name="about_the_app">Sobre o aplicativo</string>
+    <string name="ask_to_exit">Perguntar ao sair</string>
+    <string name="display_an_alert_to_exit">Exibir um alerta perguntando se deseja sair</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed faucibus purus.
@@ -37,13 +33,7 @@
         ex ligula. Nam a volutpat nisl. Nullam quis mauris non orci dictum elementum sit
         amet quis nisi. Vestibulum eget facilisis augue. Proin eu laoreet libero.
         Proin feugiat pharetra lacus, eu facilisis leo fringilla vel. In sapien eros,
-        vehicula vitae consectetur eget, interdum at erat. Sed quis nisl eu diam egestas
-        laoreet. Fusce tempor, ex eget maximus accumsan, ex purus accumsan nisi, a consequat
-        nulla lacus quis odio. Pellentesque sed lectus nec ante euismod fringilla. Vestibulum
-        efficitur vitae nulla vitae congue. Suspendisse eget nibh eu dui consequat porttitor.
-        Aenean placerat orci ex, in luctus risus maximus id. Curabitur ullamcorper tempus nibh
-        vitae sodales. Suspendisse leo velit, aliquet ut viverra sit amet, placerat dapibus felis.
-        Etiam vitae lacus dapibus purus gravida tempus.
+        vehicula vitae consectetur eget, interdum at erat.
     </string>
 
 </resources>

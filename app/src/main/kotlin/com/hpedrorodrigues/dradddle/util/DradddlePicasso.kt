@@ -11,7 +11,7 @@ public class DradddlePicasso {
     companion object {
 
         platformStatic public fun with(context: Context, url: String): RequestCreator {
-            return Picasso.with(context).load(url).placeholder(R.mipmap.loading).error(R.mipmap.network_error)
+            return Picasso.with(context).load(url).placeholder(R.mipmap.loading).error(R.mipmap.without_network)
         }
     }
 }

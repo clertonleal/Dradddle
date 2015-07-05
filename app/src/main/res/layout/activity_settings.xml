@@ -7,14 +7,91 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"
-        android:fitsSystemWindows="true"/>
+        layout="@layout/toolbar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/settings"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/screens"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/AppTheme.SettingsHeader"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AppTheme.SettingsTextView"
+                    android:text="@string/interface_settings"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_use_shared_library"
+                style="@style/AppTheme.SettingsItem">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/cb_use_shared_library"
+                    android:layout_toStartOf="@+id/cb_use_shared_library">
+
+                    <TextView
+                        android:id="@+id/tv_use_shared_library_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ask_to_exit"
+                        android:textColor="@color/dark_gray"
+                        android:textAppearance="@android:style/TextAppearance.Medium"/>
+
+                    <TextView
+                        android:id="@+id/tv_use_shared_library"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/display_an_alert_to_exit"
+                        android:textColor="@color/light_gray"
+                        android:textAppearance="@android:style/TextAppearance.Small"/>
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/cb_use_shared_library"
+                    android:clickable="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/AppTheme.SettingsHeader"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.SettingsTextView"
+                        android:text="@string/about_the_app"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
