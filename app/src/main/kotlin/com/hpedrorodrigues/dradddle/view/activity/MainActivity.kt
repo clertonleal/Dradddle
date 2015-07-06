@@ -19,11 +19,14 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 
 import com.hpedrorodrigues.dradddle.R
+import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 import com.hpedrorodrigues.dradddle.constant.RequestCode
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.*
+import com.hpedrorodrigues.dradddle.util.DradddlePreferences
 import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
 import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
@@ -42,6 +45,7 @@ public class MainActivity : BaseActivity() {
     companion object {
 
         platformStatic val DRAWER_REPLACE_SCREEN_DELAY = 400L
+        platformStatic val CLOSE_APP_DELAY = 2000L
         platformStatic val classes = object: HashMap<DrawerItem, Class<out BaseActivity>>() {
             init {
                 put(DrawerItem.PROFILE, javaClass<ProfileActivity>())
@@ -54,6 +58,7 @@ public class MainActivity : BaseActivity() {
     protected var drawerToggle: ActionBarDrawerToggle? = null
     protected var currentItem: DrawerItem? = null
     protected var searchView: DradddleSearchView? = null
+    protected var backPressedOnce: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,6 +104,14 @@ public class MainActivity : BaseActivity() {
     override fun onBackPressed() {
         if (isDrawerOpened()) {
             closeDrawer()
+        } else if (DradddlePreferences.getBoolean(DradddleConstants.CLOSE_APP)) {
+            if (backPressedOnce) {
+                super.onBackPressed()
+            } else {
+                backPressedOnce = true
+                Toast.makeText(this, R.string.back_again_to_exit, Toast.LENGTH_SHORT).show()
+                Handler().postDelayed({ backPressedOnce = false }, CLOSE_APP_DELAY)
+            }
         } else {
             super.onBackPressed()
         }

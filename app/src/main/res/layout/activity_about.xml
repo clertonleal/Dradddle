@@ -60,11 +60,6 @@
 
     </ScrollView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabShare"
-        android:src="@mipmap/ic_action_social_share"
-        style="@style/AppTheme.FAB"/>
-
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>

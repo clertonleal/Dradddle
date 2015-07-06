@@ -33,7 +33,10 @@
     <string name="suggestions">Suggestions</string>
     <string name="new_bug">New bug</string>
     <string name="contact">Contact</string>
+    <string name="back_again_to_exit">Back again to exit</string>
     <string name="ask_to_exit">Ask to exit</string>
     <string name="display_an_alert_to_exit">Display an alert asking if you want to leave</string>
+    <string name="share_app_message">Install Dradddle to view the images from Dribbble more easily.
+        Download now the application from the link %s to start using.</string>
 
 </resources>

@@ -32,6 +32,7 @@
 
             <RelativeLayout
                 android:id="@+id/close_app"
+                android:background="@drawable/selectable_item_background"
                 style="@style/AppTheme.SettingsItem">
 
                 <LinearLayout
@@ -92,6 +93,7 @@
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
                 android:gravity="center_vertical"
+                android:background="@drawable/selectable_item_background"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -118,6 +120,7 @@
                 android:id="@+id/rate_the_app"
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
+                android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -158,6 +161,7 @@
                 android:id="@+id/share_the_app"
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
+                android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -196,6 +200,7 @@
             <LinearLayout
                 android:id="@+id/report_a_bug"
                 style="@style/AppTheme.SettingsItem"
+                android:background="@drawable/selectable_item_background"
                 android:weightSum="10"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -236,6 +241,7 @@
                 android:id="@+id/idea_to_improve"
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
+                android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -275,6 +281,7 @@
                 android:id="@+id/send_us_your_feedback"
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
+                android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -314,6 +321,7 @@
                 android:id="@+id/contact_us"
                 style="@style/AppTheme.SettingsItem"
                 android:weightSum="10"
+                android:background="@drawable/selectable_item_background"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 

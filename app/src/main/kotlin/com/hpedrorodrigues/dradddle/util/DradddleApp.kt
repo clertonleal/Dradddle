@@ -13,6 +13,7 @@ public object DradddleApp {
 
     public fun view(activity: Activity) {
         val packageName = activity.getPackageName()
+
         try {
             val uri = Uri.parse(DradddleConstants.PLAY_STORE_APP_URL + packageName)
             activity.startActivity(Intent(Intent.ACTION_VIEW, uri))
@@ -23,9 +24,12 @@ public object DradddleApp {
     }
 
     public fun share(activity: Activity) {
+        val message = activity.getString(R.string.share_app_message,
+                DradddleConstants.PLAY_STORE_WEB_URL + activity.getPackageName())
+
         val intent = Intent()
         intent.setAction(Intent.ACTION_SEND)
-        intent.putExtra(Intent.EXTRA_TEXT, "Dradddle - A Dribbble client")
+        intent.putExtra(Intent.EXTRA_TEXT, message)
         intent.setType(DradddleConstants.TEXT_PLAIN_TYPE)
         activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.choose_app)))
     }

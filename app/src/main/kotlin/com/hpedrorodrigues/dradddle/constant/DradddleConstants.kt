@@ -12,4 +12,5 @@ public object DradddleConstants {
     val TEXT_PLAIN_TYPE = "text/plain"
     val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
     val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
+    val CLOSE_APP = "close_app"
 }
