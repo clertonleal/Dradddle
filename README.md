@@ -1,6 +1,7 @@
-# Dradddle
+# ![Dradddle](./app/src/main/res/mipmap-hdpi/ic_launcher.png) Dradddle
 
 A simple Android project, written in Kotlin language, to consume the [Dribble API](http://developer.dribbble.com/).
+
 Inspired by [Clêrton Leal](https://github.com/clertonleal) with [Simple Dribbble](https://github.com/clertonleal/Simple-Dribbble).
 
 <!-- Download this example application [here](https://play.google.com/store/apps/details?id=com.hpedrorodrigues.dradddle). -->
