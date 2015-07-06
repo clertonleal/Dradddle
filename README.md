@@ -6,6 +6,10 @@ Inspired by [Clêrton Leal](https://github.com/clertonleal) with [Simple Dribbbl
 
 You can download Dradddle in [Play Store](https://play.google.com/store/apps/details?id=com.hpedrorodrigues.dradddle).
 
+## Images
+
+See some pictures of Dradddle [here](./SCREENSHOTS.md).
+
 ## Libraries
 
 - [Dagger](http://square.github.io/dagger/)
