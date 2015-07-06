@@ -4,8 +4,7 @@ A simple Android project, written in Kotlin language, to consume the [Dribble AP
 
 Inspired by [Clêrton Leal](https://github.com/clertonleal) with [Simple Dribbble](https://github.com/clertonleal/Simple-Dribbble).
 
-<!-- Download this example application [here](https://play.google.com/store/apps/details?id=com.hpedrorodrigues.dradddle). -->
-<!-- [GifImageView](https://android-arsenal.com/details/1/1339) -->
+You can download Dradddle in [Play Store](https://play.google.com/store/apps/details?id=com.hpedrorodrigues.dradddle).
 
 ## Libraries
 
@@ -22,6 +21,7 @@ Inspired by [Clêrton Leal](https://github.com/clertonleal) with [Simple Dribbbl
 - [CardView](https://developer.android.com/reference/android/support/v7/widget/CardView.html)
 - [CircleImageView](https://github.com/hdodenhof/CircleImageView)
 - [ImageViewZoom](https://github.com/sephiroth74/ImageViewZoom)
+- [GifImageView](https://github.com/felipecsl/GifImageView)
 
 ## Issues
 
