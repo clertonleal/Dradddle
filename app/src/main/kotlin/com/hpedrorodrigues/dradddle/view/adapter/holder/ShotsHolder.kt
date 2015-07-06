@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.hpedrorodrigues.dradddle.R
 import de.hdodenhof.circleimageview.CircleImageView
 
-public class ShotsHolder : RecyclerView.ViewHolder {
+public class ShotsHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
     val shot: ImageView
     val authorAvatar: CircleImageView
@@ -18,7 +18,7 @@ public class ShotsHolder : RecyclerView.ViewHolder {
     val commentsCount: TextView
     val postingDate: TextView
 
-    constructor(view: View) : super(view) {
+    init {
         this.shot = view.findViewById(R.id.shot) as ImageView
         this.authorAvatar = view.findViewById(R.id.author_avatar) as CircleImageView
         this.title = view.findViewById(R.id.title) as TextView
