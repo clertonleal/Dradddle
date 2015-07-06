@@ -1,4 +1,4 @@
-# ![Dradddle](./app/src/main/res/mipmap-hdpi/ic_launcher.png) Dradddle
+# <div style="text-align:center"><img src ="./app/src/main/res/mipmap-hdpi/ic_launcher.png"/>Dradddle</div>
 
 A simple Android project, written in Kotlin language, to consume the [Dribble API](http://developer.dribbble.com/).
 
