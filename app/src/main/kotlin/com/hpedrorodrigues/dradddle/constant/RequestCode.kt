@@ -1,13 +1,8 @@
 package com.hpedrorodrigues.dradddle.constant
 
-import kotlin.platform.platformStatic
+public object RequestCode {
 
-public class RequestCode {
-
-    companion object {
-
-        platformStatic val REQUEST_PROFILE = 1
-        platformStatic val REQUEST_ABOUT = 2
-        platformStatic val REQUEST_SETTINGS = 3
-    }
+    val REQUEST_PROFILE = 1
+    val REQUEST_ABOUT = 2
+    val REQUEST_SETTINGS = 3
 }

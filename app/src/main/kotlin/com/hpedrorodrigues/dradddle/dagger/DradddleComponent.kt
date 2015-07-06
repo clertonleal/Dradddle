@@ -4,7 +4,8 @@ import dagger.Component
 import javax.inject.Singleton
 
 import com.hpedrorodrigues.dradddle.application.DradddleApplication
-import com.hpedrorodrigues.dradddle.receiver.NetworkStateReceiver
+import com.hpedrorodrigues.dradddle.receiver.NetworkStateChangeReceiver
+import com.hpedrorodrigues.dradddle.util.DradddlePreferences
 import com.hpedrorodrigues.dradddle.view.activity.AboutActivity
 import com.hpedrorodrigues.dradddle.view.activity.MainActivity
 import com.hpedrorodrigues.dradddle.view.activity.ProfileActivity
@@ -30,4 +31,6 @@ public interface DradddleComponent {
     public fun inject(recentShotsFragment: RecentShotsFragment)
 
     public fun inject(shotsFragmentPagerAdapter: ShotsFragmentPagerAdapter)
+
+    public fun inject(dradddlePreferences: DradddlePreferences)
 }

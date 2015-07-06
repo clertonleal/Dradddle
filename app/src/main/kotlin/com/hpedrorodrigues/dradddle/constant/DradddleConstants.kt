@@ -1,12 +1,15 @@
 package com.hpedrorodrigues.dradddle.constant
 
-import kotlin.platform.platformStatic
+public object DradddleConstants {
 
-public class DradddleConstants {
-
-    companion object {
-
-        platformStatic val PREFERENCES = "dradddle_preferences"
-        platformStatic val DRIBBBLE_ENDPOINT = "http://api.dribbble.com/"
-    }
+    val PREFERENCES = "dradddle_preferences"
+    val DRIBBBLE_ENDPOINT = "http://api.dribbble.com/"
+    val DEVELOPER_EMAIL = "hs.pedro.rodrigues@gmail.com"
+    val DEFAULT_SUBJECT = "DRADDDLE -"
+    val DEFAULT_EMAIL_TYPE = "message/rfc822"
+    val PLAY_STORE_APP_URL = "market://details?id="
+    val PLAY_STORE_WEB_URL = "https://play.google.com/store/apps/details?id="
+    val TEXT_PLAIN_TYPE = "text/plain"
+    val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
+    val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
 }

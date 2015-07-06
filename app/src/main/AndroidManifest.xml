@@ -37,7 +37,7 @@
             android:label="@string/settings"
             android:configChanges="keyboardHidden|orientation"/>
 
-        <receiver android:name=".receiver.NetworkStateReceiver">
+        <receiver android:name=".receiver.NetworkStateChangeReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>

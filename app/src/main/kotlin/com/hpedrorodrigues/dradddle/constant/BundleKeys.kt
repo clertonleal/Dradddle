@@ -1,11 +1,6 @@
 package com.hpedrorodrigues.dradddle.constant
 
-import kotlin.platform.platformStatic
+public object BundleKeys {
 
-public class BundleKeys {
-
-    companion object {
-
-        platformStatic val ARG_ANIMATION = "arg_animation"
-    }
+    val ARG_ANIMATION = "arg_animation"
 }
