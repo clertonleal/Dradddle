@@ -5,7 +5,7 @@
     <style name="AppTheme" parent="BaseTheme">
 
         <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:statusBarColor">@color/pink_400</item>
+        <item name="android:statusBarColor">@color/pink_350</item>
 
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:navigationBarColor">@color/pink_300</item>
