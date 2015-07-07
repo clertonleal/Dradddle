@@ -4,14 +4,6 @@
 
     <dimen name="drawer_width">300dp</dimen>
     <dimen name="drawer_profile_layout_height">200dp</dimen>
-    <dimen name="drawer_avatar_layout_padding_top">24dp</dimen>
-    <dimen name="drawer_avatar_layout_padding_bottom">8dp</dimen>
-    <dimen name="drawer_avatar_layout_padding">16dp</dimen>
-    <dimen name="drawer_avatar_size">64dp</dimen>
-    <dimen name="drawer_avatar_border_size">2dp</dimen>
-    <dimen name="drawer_profile_fields_height">56dp</dimen>
-    <dimen name="drawer_avatar_name_padding">16dp</dimen>
-    <dimen name="drawer_avatar_name_padding_height">8dp</dimen>
 
     <dimen name="default_size">48dp</dimen>
 
@@ -24,8 +16,7 @@
     <dimen name="vertical_size_item">72dp</dimen>
 
     <dimen name="default_app_bar_height">256dp</dimen>
-    <dimen name="about_app_bar_height">326dp</dimen>
-    <dimen name="card_margin">16dp</dimen>
+    <dimen name="card_margin">@dimen/spacing_large</dimen>
 
     <dimen name="spacing_xsmall">2dp</dimen>
     <dimen name="spacing_medium">8dp</dimen>
@@ -33,12 +24,6 @@
     <dimen name="spacing_xlarge">25dp</dimen>
     <dimen name="spacing_xxlarge">32dp</dimen>
 
-    <dimen name="elevation_low">9dp</dimen>
-    <dimen name="elevation_high">12dp</dimen>
-    <dimen name="status_bar_height">25dp</dimen>
-
-    <dimen name="fab_compat_margin">16dp</dimen>
-
-    <dimen name="shot_icons_height">25dp</dimen>
+    <dimen name="shot_icons_height">@dimen/spacing_xlarge</dimen>
 
 </resources>

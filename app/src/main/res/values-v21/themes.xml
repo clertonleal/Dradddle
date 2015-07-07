@@ -5,10 +5,10 @@
     <style name="AppTheme" parent="BaseTheme">
 
         <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:statusBarColor">@color/pink_400</item>
 
         <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:navigationBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/pink_300</item>
 
         <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition">@android:transition/move</item>

@@ -16,7 +16,6 @@ public class ShotsHolder(private val view: View) : RecyclerView.ViewHolder(view)
     val viewsCount: TextView
     val likesCount: TextView
     val commentsCount: TextView
-    val postingDate: TextView
 
     init {
         this.shot = view.findViewById(R.id.shot) as ImageView
@@ -26,6 +25,5 @@ public class ShotsHolder(private val view: View) : RecyclerView.ViewHolder(view)
         this.viewsCount = view.findViewById(R.id.views_count) as TextView
         this.likesCount = view.findViewById(R.id.likes_count) as TextView
         this.commentsCount = view.findViewById(R.id.comments_count) as TextView
-        this.postingDate = view.findViewById(R.id.posting_date) as TextView
     }
 }

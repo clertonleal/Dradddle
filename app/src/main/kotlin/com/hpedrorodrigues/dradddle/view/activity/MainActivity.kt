@@ -4,19 +4,15 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.widget.FloatingActionButton
 
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
-import android.support.v4.view.MenuItemCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -28,7 +24,6 @@ import com.hpedrorodrigues.dradddle.enumeration.DrawerItem
 import com.hpedrorodrigues.dradddle.enumeration.DrawerItem.*
 import com.hpedrorodrigues.dradddle.util.DradddlePreferences
 import com.hpedrorodrigues.dradddle.view.adapter.ShotsFragmentPagerAdapter
-import com.hpedrorodrigues.dradddle.view.widget.DradddleSearchView
 
 import kotlinx.android.synthetic.activity_main.drawerLayout
 import kotlinx.android.synthetic.activity_main.navigationView
@@ -57,7 +52,6 @@ public class MainActivity : BaseActivity() {
 
     protected var drawerToggle: ActionBarDrawerToggle? = null
     protected var currentItem: DrawerItem? = null
-    protected var searchView: DradddleSearchView? = null
     protected var backPressedOnce: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,16 +74,6 @@ public class MainActivity : BaseActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         drawerToggle!!.onConfigurationChanged(newConfig)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        getMenuInflater().inflate(R.menu.main, menu)
-
-        searchView = DradddleSearchView(this)
-        val searchItem = menu.findItem(R.id.action_search)
-        MenuItemCompat.setActionView(searchItem, searchView)
-
-        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

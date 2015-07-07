@@ -142,7 +142,7 @@
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@mipmap/ic_action_social_share"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/spacing_large"
         android:clickable="true"/>
 
 </android.support.design.widget.CoordinatorLayout>

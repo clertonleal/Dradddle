@@ -36,8 +36,8 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:gravity="center_vertical|end"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
+            android:paddingLeft="@dimen/spacing_xlarge"
+            android:paddingRight="@dimen/spacing_xlarge"
             android:paddingBottom="15dp"
             android:textColor="@android:color/white"/>
 

@@ -82,10 +82,10 @@ public abstract class BaseShotsFragment : BaseFragment() {
         superRecyclerView!!.setAdapter(shotsAdapter)
 
         superRecyclerView!!.setRefreshingColorResources(
-                R.color.primary,
-                R.color.primary_dark,
-                R.color.accent_translucent,
-                R.color.dark_gray)
+                R.color.pink_200,
+                R.color.pink_300,
+                R.color.pink_400,
+                R.color.pink_500)
 
         superRecyclerView!!.setRefreshListener({
 
@@ -151,6 +151,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
         val emptyView = superRecyclerView!!.getEmptyView()
         emptyView.findViewById(R.id.without_network).setVisibility(View.VISIBLE)
         emptyView.findViewById(R.id.loading).setVisibility(View.GONE)
+        hideSmallLayoutWithoutNetwork()
     }
 
     private fun showLayoutLoading() {

@@ -36,8 +36,5 @@ public class Shot : Serializable {
     SerializedName("image_teaser_url")
     var imageTeaserUrl: String? = null
 
-    SerializedName("created_at")
-    var postingDate: Date? = null
-
     var player: Player? = null
 }

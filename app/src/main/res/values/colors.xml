@@ -2,11 +2,12 @@
 
 <resources>
 
-    <color name="primary">#EC407A</color>
-    <color name="primary_dark">#F06292</color>
-    <color name="accent">#F8BBD0</color>
-    <color name="accent_translucent">#FCE4EC</color>
-    <color name="accent_bright">#E91E63</color>
+    <color name="pink_50">#FCE4EC</color>
+    <color name="pink_200">#F48FB1</color>
+    <color name="pink_300">#F06292</color>
+    <color name="pink_400">#EC407A</color>
+    <color name="pink_500">#E91E63</color>
+    <color name="pink_600">#D81B60</color>
 
     <color name="screens">#F5F5F5</color>
 
@@ -15,6 +16,6 @@
     <color name="light_gray">#BDBDBD</color>
 
     <color name="drawer_item_text">@color/dark_gray</color>
-    <color name="drawer_item_text_checked">@color/primary</color>
+    <color name="drawer_item_text_checked">@color/pink_400</color>
 
 </resources>
