@@ -31,9 +31,9 @@ public abstract class BaseShotsFragment : BaseFragment() {
 
     companion object {
 
-        platformStatic val DISPLAY_ITEMS_COUNT = 15
+        platformStatic val REMAINING_ITEMS_TO_SEE_COUNT = 10
         platformStatic val MAX_RETRIES = 3L
-        platformStatic val INIT_PAGE = 0
+        platformStatic val INIT_PAGE = -1
     }
 
     private var superRecyclerView: SuperRecyclerView? = null
@@ -66,14 +66,13 @@ public abstract class BaseShotsFragment : BaseFragment() {
         swipeLayout = superRecyclerView!!.getSwipeToRefresh()
 
         configSuperRecyclerView()
-        loadNextPage(actualPage)
+        loadFirstPage()
 
         NetworkStateObservable.addObserver(networkStateObserver)
     }
 
     override fun onDestroy() {
         NetworkStateObservable.deleteObserver(networkStateObserver)
-
         super.onDestroy()
     }
 
@@ -90,85 +89,57 @@ public abstract class BaseShotsFragment : BaseFragment() {
         superRecyclerView!!.setRefreshListener({
 
             shotsAdapter!!.cleanShots()
-            actualPage = INIT_PAGE
             reloadSmallViews()
-            loadNextPage(actualPage)
+            loadFirstPage()
         })
 
         superRecyclerView!!.setupMoreListener({
             numberOfItems: Int, numberBeforeMore: Int, currentItemPos: Int ->
 
             reloadSmallViews()
-            loadNextPage(actualPage)
-        }, DISPLAY_ITEMS_COUNT)
-
-        superRecyclerView!!.setupSwipeToDismiss(
-                object: SwipeDismissRecyclerViewTouchListener.DismissCallbacks {
-
-                    override fun canDismiss(position: Int): Boolean {
-                        return true
-                    }
-
-                    override fun onDismiss(recyclerView: RecyclerView, reversePositions: IntArray) {
-                        reversePositions.forEach { shotsAdapter!!.removeShot(it) }
-                    }
-                })
+            loadNextPage()
+        }, REMAINING_ITEMS_TO_SEE_COUNT)
     }
 
-    private fun loadNextPage(pageNumber: Int) {
-        if (connectionService!!.hasConnection()) {
-            showLayoutLoading()
-        } else {
-            showLargeLayoutWithoutNetwork()
-        }
+    private fun loadFirstPage() {
+        actualPage = INIT_PAGE
+        loadNextPage()
+    }
 
-        val subscription = retrievePage(pageNumber)
+    private fun loadNextPage() {
+        if (connectionService!!.hasConnection()) showLoadingLayout() else showWithoutNetworkLayout()
+
+        actualPage++
+
+        val subscription = retrievePage(actualPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .retry(MAX_RETRIES)
-                .subscribe({
-                    shotsAdapter!!.addPage(it)
-                }, {
-                    e(it.getMessage()!!)
-                }, {
+                .subscribe({ shotsAdapter!!.addPage(it) }, { e(it.getMessage()!!) }, {
                     swipeLayout!!.setRefreshing(false)
-                    hideLayoutMoreProgress()
-                    actualPage++
+                    superRecyclerView!!.getMoreProgressView().setVisibility(View.GONE)
                 })
         compositeSubscription.add(subscription)
     }
 
-    private fun showSmallLayoutWithoutNetwork() {
-        withoutNetworkLayout!!.setVisibility(View.VISIBLE)
-        withoutNetworkLayout!!.startAnimation(AnimationUtils.loadAnimation(context, R.anim.jump))
-    }
-
-    private fun hideSmallLayoutWithoutNetwork() {
-        withoutNetworkLayout!!.setVisibility(View.GONE)
-    }
-
-    private fun showLargeLayoutWithoutNetwork() {
+    private fun showWithoutNetworkLayout() {
         val emptyView = superRecyclerView!!.getEmptyView()
         emptyView.findViewById(R.id.without_network).setVisibility(View.VISIBLE)
         emptyView.findViewById(R.id.loading).setVisibility(View.GONE)
-        hideSmallLayoutWithoutNetwork()
     }
 
-    private fun showLayoutLoading() {
+    private fun showLoadingLayout() {
         val emptyView = superRecyclerView!!.getEmptyView()
         emptyView.findViewById(R.id.without_network).setVisibility(View.GONE)
         emptyView.findViewById(R.id.loading).setVisibility(View.VISIBLE)
     }
 
-    private fun hideLayoutMoreProgress() {
-        superRecyclerView!!.getMoreProgressView().setVisibility(View.GONE)
-    }
-
     private fun reloadSmallViews() {
         if (connectionService!!.hasConnection()) {
-            hideSmallLayoutWithoutNetwork()
+            withoutNetworkLayout!!.setVisibility(View.GONE)
         } else {
-            showSmallLayoutWithoutNetwork()
+            withoutNetworkLayout!!.setVisibility(View.VISIBLE)
+            withoutNetworkLayout!!.startAnimation(AnimationUtils.loadAnimation(context, R.anim.jump))
         }
     }
 }

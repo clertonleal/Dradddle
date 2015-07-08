@@ -13,4 +13,8 @@ public object DradddleConstants {
     val GMAIL_CLASS_NAME_1 = "com.google.android.gm"
     val GMAIL_CLASS_NAME_2 = "com.google.android.gm.ComposeActivityGmail"
     val CLOSE_APP = "close_app"
+    val FACEBOOK_DRIBBBLE_URL = "https://www.facebook.com/dribbble"
+    val INSTAGRAM_DRIBBBLE_URL = "https://instagram.com/dribbble/"
+    val TWITTER_DRIBBBLE_URL = "https://twitter.com/dribbble"
+    val SITE_DRIBBBLE_URL = "https://dribbble.com/"
 }

@@ -16,19 +16,19 @@ public class Shot : Serializable {
     var url: String? = null
 
     SerializedName("views_count")
-    var viewsCount: Long? = null
+    var viewsCount: Long = 0
 
     SerializedName("likes_count")
-    var likesCount: Long? = null
+    var likesCount: Long = 0
 
     SerializedName("comments_count")
-    var commentsCount: Long? = null
+    var commentsCount: Long = 0
 
     SerializedName("rebounds_count")
-    var reboundsCount: Long? = null
+    var reboundsCount: Long = 0
 
     SerializedName("buckets_count")
-    var bucketsCount: Long? = null
+    var bucketsCount: Long = 0
 
     SerializedName("image_url")
     var imageUrl: String? = null

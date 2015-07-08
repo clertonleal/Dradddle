@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.hpedrorodrigues.dradddle.R
 import de.hdodenhof.circleimageview.CircleImageView
 
-public class ShotsHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+public class ShotsHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
     val shot: ImageView
     val authorAvatar: CircleImageView

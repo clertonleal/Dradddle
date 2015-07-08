@@ -23,7 +23,8 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
     var context: Context? = null
         @Inject set
 
-    private var shots: List<Shot> = ArrayList<Shot>()
+    private var shots: MutableList<Shot> = ArrayList<Shot>()
+    private var onShotClickListener: OnShotClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ShotsHolder {
         return ShotsHolder(inflater!!.inflate(R.layout.shots_item, parent, false))
@@ -37,26 +38,35 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
         holder.viewsCount.setText(shot.viewsCount.toString())
         holder.likesCount.setText(shot.likesCount.toString())
         holder.commentsCount.setText(shot.commentsCount.toString())
+
         DradddlePicasso.with(context!!, shot.imageUrl!!).into(holder.shot)
         DradddlePicasso.with(context!!, shot.player!!.avatarUrl!!).into(holder.authorAvatar)
+
+        holder.view.setOnClickListener({
+            if (onShotClickListener != null) {
+                onShotClickListener!!.onShotClick(shot.id!!)
+            }
+        })
     }
 
-    override fun getItemCount(): Int {
-        return shots.size()
-    }
+    override fun getItemCount(): Int = shots.size()
 
     public fun addPage(page: Page) {
-        shots = shots.plus(page.shots!!)
-        notifyDataSetChanged()
-    }
-
-    public fun removeShot(position: Int) {
-        shots.drop(position)
+        shots.addAll(page.shots!!)
         notifyDataSetChanged()
     }
 
     public fun cleanShots() {
-        shots.dropWhile { true }
+        shots.clear()
         notifyDataSetChanged()
+    }
+
+    public fun setOnShotClickListener(listener: OnShotClickListener) {
+        onShotClickListener = listener
+    }
+
+    public interface OnShotClickListener {
+
+        fun onShotClick(id: Long)
     }
 }
