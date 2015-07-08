@@ -23,6 +23,7 @@
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">25dp</dimen>
     <dimen name="spacing_xxlarge">32dp</dimen>
+    <dimen name="spacing_xxxlarge">38dp</dimen>
 
     <dimen name="shot_icons_height">@dimen/spacing_xlarge</dimen>
 
