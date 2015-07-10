@@ -42,7 +42,7 @@ Dradddle is a work in progress, but feel free to study it.
 
 ## License
 
-    Copyright 2014 Pedro Rodrigues
+    Copyright 2015 Pedro Rodrigues
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
