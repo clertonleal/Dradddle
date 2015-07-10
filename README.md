@@ -36,10 +36,22 @@ find and answer open a new one [here](https://github.com/hpedrorodrigues/dradddl
 If you need support send me an [email](mailto:hs.pedro.rodrigues@gmail.com). You can also
 contact [me](https://github.com/hpedrorodrigues) for any non public concerns.
 
-## License
-
-Sand is released under the MIT license. See [LICENSE](./LICENSE) for details.
-
 ## More
 
 Dradddle is a work in progress, but feel free to study it.
+
+## License
+
+    Copyright 2014 Pedro Rodrigues
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
