@@ -3,7 +3,6 @@
 <resources>
 
     <dimen name="drawer_width">300dp</dimen>
-    <dimen name="drawer_profile_layout_height">200dp</dimen>
 
     <dimen name="default_size">48dp</dimen>
 

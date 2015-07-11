@@ -114,7 +114,6 @@ public class AboutActivity() : BaseActivity() {
     }
 
     private fun getAlphaColor(color: Int, scrollRatio: Float): Int {
-
         val alpha = (scrollRatio * DradddleConstants.MAX_VALUE_ALPHA).toInt()
         return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color))
     }

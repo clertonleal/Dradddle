@@ -2,15 +2,6 @@
 
 <resources>
 
-    <style name="AppTheme.CardContent" parent="BaseTheme.CardContent"/>
-    <style name="BaseTheme.CardContent" parent="android:Widget">
-        <item name="android:paddingLeft">@dimen/spacing_large</item>
-        <item name="android:paddingRight">@dimen/spacing_large</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
     <style name="AppTheme.TextView" parent="BaseTheme.TextView"/>
     <style name="BaseTheme.TextView">
         <item name="android:textColor">@color/dark_gray</item>

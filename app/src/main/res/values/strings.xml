@@ -43,20 +43,19 @@
     <string name="open_source_licenses">Licenças de código aberto</string>
     <string name="software_developer">Desenvolvedor de Software</string>
 
-    <string name="lorem_ipsum">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed faucibus purus.
-        Donec ac tincidunt lorem, vel lacinia dolor. Duis viverra vitae nunc eu feugiat.
-        In dictum ipsum metus, in sagittis felis elementum ac. Fusce facilisis, mauris id
-        consectetur lobortis, ante ex suscipit quam, at gravida leo nisi dignissim ipsum.
-        Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        Aenean tincidunt faucibus quam, ac semper erat malesuada sit amet.
-        Etiam mollis sagittis imperdiet. Cras vitae lorem consectetur, blandit orci vel,
-        porttitor nisl. Nam non consectetur sapien, nec maximus tortor. Fusce eu tortor est.
-        Aenean aliquet dui vitae metus dapibus, commodo egestas tellus condimentum. Quisque at
-        ex ligula. Nam a volutpat nisl. Nullam quis mauris non orci dictum elementum sit
-        amet quis nisi. Vestibulum eget facilisis augue. Proin eu laoreet libero.
-        Proin feugiat pharetra lacus, eu facilisis leo fringilla vel. In sapien eros,
-        vehicula vitae consectetur eget, interdum at erat.
+    <string name="dribbble_title">Show and tell for designers</string>
+    <string name="dribbble_about">
+        What are you working on? Dribbble is a community of designers answering that question each
+        day. Web designers, graphic designers, illustrators, icon artists, typographers, logo
+        designers, and other creative types share small screenshots (shots) that show their work,
+        process, and current projects.\n\n
+
+        Dribbble is a place to show and tell, promote, discover, and explore design.\n\n
+
+        Headquartered in Salem, Massachusetts, Dribbble began as a side project and is now a tiny,
+        bootstrapped and profitable company helping the world\'s design talent share their creations
+        and get hired. Dribbble has become a go-to resource for discovering and connecting with
+        designers around the globe.\n
     </string>
 
 </resources>

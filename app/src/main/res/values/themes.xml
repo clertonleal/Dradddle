@@ -7,7 +7,7 @@
 
         <item name="colorPrimary">@color/pink_400</item>
         <item name="colorPrimaryDark">@color/pink_500</item>
-        <item name="colorAccent">@color/pink_500</item>
+        <item name="colorAccent">@color/pink_300</item>
 
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
