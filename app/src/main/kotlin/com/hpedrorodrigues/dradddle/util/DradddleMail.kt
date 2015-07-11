@@ -31,7 +31,7 @@ public object DradddleMail {
         try {
             val intent = buildEmailIntent(activity, resSubjectId)
             intent.setClassName(DradddleConstants.GMAIL_CLASS_NAME_1, DradddleConstants.GMAIL_CLASS_NAME_2)
-            activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.choose_app)))
+            activity.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             val intent = buildEmailIntent(activity, resSubjectId)
             activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.choose_app)))

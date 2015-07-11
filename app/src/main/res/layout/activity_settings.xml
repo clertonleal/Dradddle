@@ -129,7 +129,6 @@
                     android:layout_height="@dimen/default_size"
                     android:layout_weight="1"
                     android:contentDescription="@string/app_name"
-                    android:scaleType="centerCrop"
                     android:tint="@color/dark_gray"
                     android:src="@mipmap/ic_action_rate"/>
 

@@ -6,7 +6,6 @@ import kotlin.platform.platformStatic
 enum class DrawerItem(val itemId: Int) {
     HOME(R.id.drawer_home),
     DRIBBBLE(R.id.drawer_dribbble),
-    ABOUT(R.id.drawer_about),
     SETTINGS(R.id.drawer_settings);
 
     companion object {

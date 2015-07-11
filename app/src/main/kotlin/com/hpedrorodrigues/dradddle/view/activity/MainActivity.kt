@@ -44,7 +44,6 @@ public class MainActivity : BaseActivity() {
         platformStatic val classes = object: HashMap<DrawerItem, Class<out BaseActivity>>() {
             init {
                 put(DrawerItem.DRIBBBLE, javaClass<DribbbleActivity>())
-                put(DrawerItem.ABOUT, javaClass<AboutActivity>())
                 put(DrawerItem.SETTINGS, javaClass<SettingsActivity>())
             }
         }
@@ -65,7 +64,7 @@ public class MainActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
-            RequestCode.REQUEST_DRIBBBLE, RequestCode.REQUEST_ABOUT, RequestCode.REQUEST_SETTINGS ->
+            RequestCode.REQUEST_DRIBBBLE, RequestCode.REQUEST_SETTINGS ->
                 getMenuItem(R.id.drawer_home).setChecked(true)
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -119,7 +118,7 @@ public class MainActivity : BaseActivity() {
 
         navigationView.inflateHeaderView(R.layout.drawer_header)
                 .setOnClickListener {
-                    val item = getMenuItem(R.id.drawer_about)
+                    val item = getMenuItem(R.id.drawer_dribbble)
                     item.setChecked(true)
                     closeDrawer()
                     navigateTo(DrawerItem.find(item.getItemId()))
@@ -165,7 +164,6 @@ public class MainActivity : BaseActivity() {
             when (item) {
                 HOME -> {}
                 DRIBBBLE -> startWithResultAndFade(classes.get(DRIBBBLE), RequestCode.REQUEST_DRIBBBLE)
-                ABOUT -> startWithResultAndFade(classes.get(ABOUT), RequestCode.REQUEST_ABOUT)
                 SETTINGS -> startWithResultAndFade(classes.get(SETTINGS), RequestCode.REQUEST_SETTINGS)
                 else -> throw IllegalArgumentException("Invalid item $item")
             }
