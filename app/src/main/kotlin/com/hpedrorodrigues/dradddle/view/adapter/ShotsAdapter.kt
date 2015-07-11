@@ -39,8 +39,8 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
         holder.likesCount.setText(shot.likesCount.toString())
         holder.commentsCount.setText(shot.commentsCount.toString())
 
-        DradddlePicasso.with(context!!, shot.imageUrl!!).into(holder.shot)
-        DradddlePicasso.with(context!!, shot.player!!.avatarUrl!!).into(holder.authorAvatar)
+        DradddlePicasso.loadAvatar(shot.player!!.avatarUrl!!).into(holder.authorAvatar)
+        DradddlePicasso.loadShot(shot.imageUrl!!).into(holder.shot)
 
         holder.view.setOnClickListener {
             if (onShotClickListener != null) {

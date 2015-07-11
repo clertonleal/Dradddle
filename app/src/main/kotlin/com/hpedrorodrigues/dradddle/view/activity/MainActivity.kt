@@ -43,7 +43,7 @@ public class MainActivity : BaseActivity() {
         platformStatic val CLOSE_APP_DELAY = 2000L
         platformStatic val classes = object: HashMap<DrawerItem, Class<out BaseActivity>>() {
             init {
-                put(DrawerItem.PROFILE, javaClass<ProfileActivity>())
+                put(DrawerItem.DRIBBBLE, javaClass<DribbbleActivity>())
                 put(DrawerItem.ABOUT, javaClass<AboutActivity>())
                 put(DrawerItem.SETTINGS, javaClass<SettingsActivity>())
             }
@@ -65,7 +65,7 @@ public class MainActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
-            RequestCode.REQUEST_PROFILE, RequestCode.REQUEST_ABOUT, RequestCode.REQUEST_SETTINGS ->
+            RequestCode.REQUEST_DRIBBBLE, RequestCode.REQUEST_ABOUT, RequestCode.REQUEST_SETTINGS ->
                 getMenuItem(R.id.drawer_home).setChecked(true)
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -119,7 +119,7 @@ public class MainActivity : BaseActivity() {
 
         navigationView.inflateHeaderView(R.layout.drawer_header)
                 .setOnClickListener {
-                    val item = getMenuItem(R.id.drawer_profile)
+                    val item = getMenuItem(R.id.drawer_about)
                     item.setChecked(true)
                     closeDrawer()
                     navigateTo(DrawerItem.find(item.getItemId()))
@@ -164,7 +164,7 @@ public class MainActivity : BaseActivity() {
         Handler().postDelayed({
             when (item) {
                 HOME -> {}
-                PROFILE -> startWithResultAndFade(classes.get(PROFILE), RequestCode.REQUEST_PROFILE)
+                DRIBBBLE -> startWithResultAndFade(classes.get(DRIBBBLE), RequestCode.REQUEST_DRIBBBLE)
                 ABOUT -> startWithResultAndFade(classes.get(ABOUT), RequestCode.REQUEST_ABOUT)
                 SETTINGS -> startWithResultAndFade(classes.get(SETTINGS), RequestCode.REQUEST_SETTINGS)
                 else -> throw IllegalArgumentException("Invalid item $item")

@@ -7,7 +7,7 @@ import com.hpedrorodrigues.dradddle.R
 import kotlinx.android.synthetic.activity_profile.toolbar
 import kotlinx.android.synthetic.activity_profile.collapsing_toolbar
 
-public class ProfileActivity() : BaseActivity() {
+public class DribbbleActivity() : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super<BaseActivity>.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ public class ProfileActivity() : BaseActivity() {
         setSupportActionBar(toolbar as Toolbar)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true)
 
-        collapsing_toolbar.setTitle(getString(R.string.profile))
+        collapsing_toolbar.setTitle(getString(R.string.dribbble))
     }
 
     override fun injectMembers() {

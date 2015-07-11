@@ -9,9 +9,9 @@
             android:icon="@mipmap/ic_action_home"
             android:title="@string/home"/>
         <item
-            android:id="@+id/drawer_profile"
-            android:icon="@mipmap/ic_action_account_circle"
-            android:title="@string/profile"/>
+            android:id="@+id/drawer_dribbble"
+            android:icon="@mipmap/ic_dribbble_box"
+            android:title="@string/dribbble"/>
         <item
             android:id="@+id/drawer_about"
             android:icon="@mipmap/ic_action_info"

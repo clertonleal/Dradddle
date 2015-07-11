@@ -2,16 +2,25 @@ package com.hpedrorodrigues.dradddle.util
 
 import android.content.Context
 import com.hpedrorodrigues.dradddle.R
+import com.hpedrorodrigues.dradddle.application.DradddleApplication
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
-import kotlin.platform.platformStatic
+import javax.inject.Inject
 
-public class DradddlePicasso {
+public object DradddlePicasso {
 
-    companion object {
+    var context: Context? = null
+        @Inject set
 
-        platformStatic public fun with(context: Context, url: String): RequestCreator {
-            return Picasso.with(context).load(url).placeholder(R.mipmap.loading).error(R.mipmap.without_network)
-        }
+    init {
+        DradddleApplication.component().inject(this)
+    }
+
+    public fun loadAvatar(url: String): RequestCreator {
+        return Picasso.with(context).load(url).placeholder(R.mipmap.ic_account).error(R.mipmap.ic_account)
+    }
+
+    public fun loadShot(url: String): RequestCreator {
+        return Picasso.with(context).load(url).placeholder(R.mipmap.loading).error(R.mipmap.without_network)
     }
 }

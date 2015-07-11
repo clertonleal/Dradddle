@@ -7,7 +7,7 @@
     <string name="drawer_open">Menu aberto</string>
     <string name="drawer_close">Menu fechado</string>
     <string name="home">Início</string>
-    <string name="profile">Perfil</string>
+    <string name="dribbble">Dribbble</string>
     <string name="about">Sobre</string>
     <string name="settings">Configurações</string>
     <string name="without_connection">Sem conexão</string>
@@ -40,7 +40,7 @@
     <string name="share_app_message">Instale o Dradddle e visualize as imagens do Dribbble mais
         facilmente. Baixe agora o aplicativo no link %s e comece a usar.</string>
     <string name="version_app">Versão %s</string>
-    <string name="libraries">Bibliotecas</string>
+    <string name="open_source_licenses">Licenças de código aberto</string>
     <string name="software_developer">Desenvolvedor de Software</string>
 
     <string name="lorem_ipsum">

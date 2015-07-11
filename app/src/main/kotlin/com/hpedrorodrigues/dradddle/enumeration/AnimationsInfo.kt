@@ -1,9 +1,7 @@
 package com.hpedrorodrigues.dradddle.enumeration
 
-import kotlin.platform.platformStatic
-
 public enum class AnimationsInfo(
-        private val animation: SupportedAnimations, private val reverseAnimation: SupportedAnimations) {
+        val animation: SupportedAnimations, val reverseAnimation: SupportedAnimations) {
 
     FADE(SupportedAnimations.FADE, SupportedAnimations.FADE),
     ZOOM(SupportedAnimations.ZOOM, SupportedAnimations.ZOOM),
@@ -14,18 +12,8 @@ public enum class AnimationsInfo(
 
     companion object {
 
-        platformStatic fun findReverseByAnimation(animation: SupportedAnimations): SupportedAnimations {
-            return AnimationsInfo.values()
-                    .filter { _ -> _.getAnimation() == animation } [0]
-                    .getReverseAnimation()
+        public fun findReverseByAnimation(animation: SupportedAnimations): SupportedAnimations {
+            return AnimationsInfo.values().filter { it.animation == animation } [0].reverseAnimation
         }
-    }
-
-    public fun getAnimation(): SupportedAnimations {
-        return animation
-    }
-
-    public fun getReverseAnimation(): SupportedAnimations {
-        return reverseAnimation
     }
 }
