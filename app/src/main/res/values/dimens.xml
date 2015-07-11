@@ -26,5 +26,6 @@
     <dimen name="spacing_xxxlarge">38dp</dimen>
 
     <dimen name="shot_icons_height">@dimen/spacing_xlarge</dimen>
+    <dimen name="library_item_height">70dp</dimen>
 
 </resources>

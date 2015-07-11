@@ -13,13 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
+        android:visibility="gone"
         android:src="@mipmap/without_network"/>
 
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="@dimen/default_size"
         android:layout_height="@dimen/default_size"
-        android:visibility="gone"
         android:indeterminate="true"/>
 
 </LinearLayout>

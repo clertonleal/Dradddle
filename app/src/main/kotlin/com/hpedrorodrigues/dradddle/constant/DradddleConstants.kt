@@ -5,6 +5,8 @@ public object DradddleConstants {
     val PREFERENCES = "dradddle_preferences"
     val DRIBBBLE_ENDPOINT = "http://api.dribbble.com/"
     val DEVELOPER_EMAIL = "hs.pedro.rodrigues@gmail.com"
+    val DEVELOPER_NAME = "Pedro Rodrigues"
+    val DEVELOPER_GITHUB = "https://github.com/hpedrorodrigues"
     val DEFAULT_SUBJECT = "DRADDDLE -"
     val DEFAULT_EMAIL_TYPE = "message/rfc822"
     val PLAY_STORE_APP_URL = "market://details?id="
@@ -17,4 +19,6 @@ public object DradddleConstants {
     val INSTAGRAM_DRIBBBLE_URL = "https://instagram.com/dribbble/"
     val TWITTER_DRIBBBLE_URL = "https://twitter.com/dribbble"
     val SITE_DRIBBBLE_URL = "https://dribbble.com/"
+    val MAX_VALUE_ALPHA = 255.0
+    val MIN_VALUE_ALPHA = 0.0
 }

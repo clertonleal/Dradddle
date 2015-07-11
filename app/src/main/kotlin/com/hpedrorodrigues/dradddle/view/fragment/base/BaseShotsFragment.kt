@@ -87,15 +87,12 @@ public abstract class BaseShotsFragment : BaseFragment() {
                 R.color.pink_500)
 
         superRecyclerView!!.setRefreshListener({
-
             shotsAdapter!!.cleanShots()
             reloadSmallViews()
             loadFirstPage()
         })
 
-        superRecyclerView!!.setupMoreListener({
-            numberOfItems: Int, numberBeforeMore: Int, currentItemPos: Int ->
-
+        superRecyclerView!!.setupMoreListener({ numberOfItems, numberBeforeMore, currentItemPos ->
             reloadSmallViews()
             loadNextPage()
         }, REMAINING_ITEMS_TO_SEE_COUNT)

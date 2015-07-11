@@ -14,6 +14,7 @@ import dagger.Provides;
 import com.hpedrorodrigues.dradddle.application.BaseApplication
 import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 import com.hpedrorodrigues.dradddle.network.DradddleNetwork
+import com.hpedrorodrigues.dradddle.util.VersionInfo
 import retrofit.RestAdapter
 
 Module public class DradddleModule(private val application: BaseApplication) {

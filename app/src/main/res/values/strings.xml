@@ -39,6 +39,9 @@
     <string name="display_an_alert_to_exit">Exibir um alerta perguntando se deseja sair</string>
     <string name="share_app_message">Instale o Dradddle e visualize as imagens do Dribbble mais
         facilmente. Baixe agora o aplicativo no link %s e comece a usar.</string>
+    <string name="version_app">Versão %s</string>
+    <string name="libraries">Bibliotecas</string>
+    <string name="software_developer">Desenvolvedor de Software</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed faucibus purus.

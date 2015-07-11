@@ -14,9 +14,6 @@ import javax.inject.Inject
 
 public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
 
-    @Inject
-    constructor() : super() {}
-
     var inflater: LayoutInflater? = null
         @Inject set
 
@@ -26,8 +23,11 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
     private var shots: MutableList<Shot> = ArrayList<Shot>()
     private var onShotClickListener: OnShotClickListener? = null
 
+    @Inject
+    constructor() : super() {}
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ShotsHolder {
-        return ShotsHolder(inflater!!.inflate(R.layout.shots_item, parent, false))
+        return ShotsHolder(inflater!!.inflate(R.layout.shots, parent, false))
     }
 
     override fun onBindViewHolder(holder: ShotsHolder, position: Int) {
@@ -42,11 +42,11 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
         DradddlePicasso.with(context!!, shot.imageUrl!!).into(holder.shot)
         DradddlePicasso.with(context!!, shot.player!!.avatarUrl!!).into(holder.authorAvatar)
 
-        holder.view.setOnClickListener({
+        holder.view.setOnClickListener {
             if (onShotClickListener != null) {
                 onShotClickListener!!.onShotClick(shot.id!!)
             }
-        })
+        }
     }
 
     override fun getItemCount(): Int = shots.size()
