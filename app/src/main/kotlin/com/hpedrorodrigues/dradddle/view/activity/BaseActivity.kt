@@ -152,7 +152,7 @@ public abstract class BaseActivity : AppCompatActivity() {
     private fun <A : BaseActivity> start(activityClass: Class<A>, animation: SupportedAnimations) {
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val intent = Intent(this, activityClass)
-        intent.putExtra(BundleKeys.ARG_ANIMATION, reverseAnimation.getOrder())
+        intent.putExtra(BundleKeys.ARG_ANIMATION, reverseAnimation.order)
 
         startActivity(intent)
         overrideTransition(animation)
@@ -162,7 +162,7 @@ public abstract class BaseActivity : AppCompatActivity() {
             activityClass: Class<A>, requestCode: Int, animation: SupportedAnimations) {
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val intent = Intent(this, activityClass)
-        intent.putExtra(BundleKeys.ARG_ANIMATION, reverseAnimation.getOrder())
+        intent.putExtra(BundleKeys.ARG_ANIMATION, reverseAnimation.order)
 
         startActivityForResult(intent, requestCode)
         overrideTransition(animation)
@@ -173,10 +173,10 @@ public abstract class BaseActivity : AppCompatActivity() {
 
         val reverseAnimation = AnimationsInfo.findReverseByAnimation(animation)
         val bundle = if (fragment.getArguments() == null) Bundle() else fragment.getArguments()
-        bundle.putInt(BundleKeys.ARG_ANIMATION, reverseAnimation.getOrder())
+        bundle.putInt(BundleKeys.ARG_ANIMATION, reverseAnimation.order)
         fragment.setArguments(bundle)
 
-        when (animation) {
+        when(animation) {
             SupportedAnimations.FADE ->
                 transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
             SupportedAnimations.ZOOM ->

@@ -36,7 +36,7 @@ public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapt
         @Inject set
 
     override fun getItem(position: Int): Fragment {
-        return when (position) {
+        return when(position) {
             POPULAR_SHOTS_POSITION, DEBUT_SHOTS_POSITION -> fragments.get(position)
             else -> throw IllegalArgumentException("Invalid position $position at getItem")
         }

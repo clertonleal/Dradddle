@@ -38,7 +38,7 @@
     <string name="share_app_message">Install Dradddle to view the images from Dribbble more easily.
         Download now the application from the link %s to start using.</string>
     <string name="version_app">Version %s</string>
-    <string name="open_source_licenses">Open source licenses</string>
+    <string name="used_libraries">Used libraries</string>
     <string name="software_developer">Software Developer</string>
 
 </resources>

@@ -2,7 +2,7 @@ package com.hpedrorodrigues.dradddle.enumeration
 
 import kotlin.platform.platformStatic
 
-public enum class SupportedAnimations(private val order: Int) {
+public enum class SupportedAnimations(val order: Int) {
     FADE(0),
     ZOOM(1),
     SLIDE_LEFT(2),
@@ -13,11 +13,7 @@ public enum class SupportedAnimations(private val order: Int) {
     companion object {
 
         platformStatic public fun find(order: Int): SupportedAnimations {
-            return SupportedAnimations.values().filter { _ -> _.getOrder() == order } [0]
+            return SupportedAnimations.values().filter { it.order == order } [0]
         }
-    }
-
-    public fun getOrder(): Int {
-        return order
     }
 }

@@ -40,7 +40,7 @@
     <string name="share_app_message">Instale o Dradddle e visualize as imagens do Dribbble mais
         facilmente. Baixe agora o aplicativo no link %s e comece a usar.</string>
     <string name="version_app">Versão %s</string>
-    <string name="open_source_licenses">Licenças de código aberto</string>
+    <string name="used_libraries">Bibliotecas utilizadas</string>
     <string name="software_developer">Desenvolvedor de Software</string>
 
     <string name="dribbble_title">Show and tell for designers</string>

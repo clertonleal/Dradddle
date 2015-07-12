@@ -12,5 +12,6 @@
     android:layout_marginEnd="@dimen/spacing_large"
     android:layout_marginRight="@dimen/spacing_large"
     android:layout_marginBottom="@dimen/spacing_medium"
-    android:text="@string/open_source_licenses"
+    android:textStyle="bold"
+    android:text="@string/used_libraries"
     android:id="@+id/title"/>
