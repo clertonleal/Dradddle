@@ -13,9 +13,6 @@ public interface DradddleNetwork {
     public fun retrievePopularPage(Query("page") page: Int): Observable<Page>
 
     GET("/shots/debuts")
-    public fun retrieveRecentPage(Query("page") page: Int): Observable<Page>
-
-    GET("/shots/debuts?sort=recent")
     public fun retrieveDebutPage(Query("page") page: Int): Observable<Page>
 
     GET("/shots/{dribbleId}")

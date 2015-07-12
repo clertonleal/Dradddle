@@ -7,25 +7,24 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.hpedrorodrigues.dradddle.R
 import com.hpedrorodrigues.dradddle.application.DradddleApplication
-import com.hpedrorodrigues.dradddle.enumeration.Shots
 import com.hpedrorodrigues.dradddle.view.fragment.base.BaseFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.DebutShotsFragment
 import com.hpedrorodrigues.dradddle.view.fragment.shot.PopularShotsFragment
-import com.hpedrorodrigues.dradddle.view.fragment.shot.RecentShotsFragment
 import java.util.ArrayList
 import javax.inject.Inject
-import kotlin.platform.platformStatic
 
 public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     companion object {
 
-        platformStatic val fragments = object: ArrayList<BaseFragment>() {
-            init {
-                add(PopularShotsFragment())
-                add(RecentShotsFragment())
-                add(DebutShotsFragment())
-            }
+        val POPULAR_SHOTS_POSITION = 0
+        val DEBUT_SHOTS_POSITION = 1
+    }
+
+    private val fragments = object: ArrayList<BaseFragment>() {
+        init {
+            add(PopularShotsFragment())
+            add(DebutShotsFragment())
         }
     }
 
@@ -37,21 +36,20 @@ public class ShotsFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapt
         @Inject set
 
     override fun getItem(position: Int): Fragment {
-        return when(Shots.find(position)) {
-            Shots.POPULAR, Shots.RECENT, Shots.DEBUTS -> fragments.get(position)
+        return when (position) {
+            POPULAR_SHOTS_POSITION, DEBUT_SHOTS_POSITION -> fragments.get(position)
             else -> throw IllegalArgumentException("Invalid position $position at getItem")
         }
     }
 
     override fun getCount(): Int {
-        return Shots.size()
+        return fragments.size()
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return when(Shots.find(position)) {
-            Shots.POPULAR -> context!!.getString(R.string.popular)
-            Shots.RECENT -> context!!.getString(R.string.recent)
-            Shots.DEBUTS -> context!!.getString(R.string.debuts)
+        return when(position) {
+            POPULAR_SHOTS_POSITION -> context!!.getString(R.string.popular)
+            DEBUT_SHOTS_POSITION -> context!!.getString(R.string.debuts)
             else -> throw IllegalArgumentException("Invalid position $position at getPageTitle")
         }
     }
