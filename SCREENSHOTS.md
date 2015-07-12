@@ -6,7 +6,7 @@
 
 ## Settings
 
-![Settings](./screenshots/settings.png?raw=true&size=512x288&size_mode=2)
+<p align="center"><img src="./screenshots/settings.png?raw=true" alt="Settings" height="512" width="288"/></p>
 
 ## About
 
