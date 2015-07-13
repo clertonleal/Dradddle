@@ -84,11 +84,18 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                     <TextView
-                        android:id="@+id/dribbble_about"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/spacing_xlarge"
                         android:text="@string/dribbble_about" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|end"
+                        android:textStyle="italic"
+                        android:layout_marginTop="@dimen/spacing_xsmall"
+                        android:text="@string/text_taken_from_the_site" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,41 +104,69 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <LinearLayout
                             android:id="@+id/dribbble_site"
-                            android:layout_width="@dimen/spacing_xxxlarge"
-                            android:layout_height="@dimen/spacing_xxxlarge"
+                            android:layout_width="@dimen/default_size"
+                            android:layout_height="@dimen/default_size"
                             android:layout_margin="@dimen/spacing_medium"
-                            android:contentDescription="@string/app_name"
                             android:background="@drawable/selectable_item_background"
-                            android:src="@mipmap/ic_dribbble_box"/>
+                            android:gravity="center">
 
-                        <ImageView
+                            <ImageView
+                                android:layout_width="@dimen/spacing_xxxlarge"
+                                android:layout_height="@dimen/spacing_xxxlarge"
+                                android:contentDescription="@string/app_name"
+                                android:src="@mipmap/ic_dribbble_box"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:id="@+id/dribbble_facebook"
-                            android:layout_width="@dimen/spacing_xxlarge"
-                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_width="@dimen/default_size"
+                            android:layout_height="@dimen/default_size"
                             android:layout_margin="@dimen/spacing_medium"
-                            android:contentDescription="@string/app_name"
                             android:background="@drawable/selectable_item_background"
-                            android:src="@mipmap/ic_facebook_box"/>
+                            android:gravity="center">
 
-                        <ImageView
+                            <ImageView
+                                android:layout_width="@dimen/spacing_xxlarge"
+                                android:layout_height="@dimen/spacing_xxlarge"
+                                android:contentDescription="@string/app_name"
+                                android:src="@mipmap/ic_facebook_box"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:id="@+id/dribbble_instagram"
-                            android:layout_width="@dimen/spacing_xxlarge"
-                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_width="@dimen/default_size"
+                            android:layout_height="@dimen/default_size"
                             android:layout_margin="@dimen/spacing_medium"
-                            android:contentDescription="@string/app_name"
                             android:background="@drawable/selectable_item_background"
-                            android:src="@mipmap/ic_instagram"/>
+                            android:gravity="center">
 
-                        <ImageView
+                            <ImageView
+                                android:layout_width="@dimen/spacing_xxlarge"
+                                android:layout_height="@dimen/spacing_xxlarge"
+                                android:contentDescription="@string/app_name"
+                                android:src="@mipmap/ic_instagram"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:id="@+id/dribbble_twitter"
-                            android:layout_width="@dimen/spacing_xxlarge"
-                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_width="@dimen/default_size"
+                            android:layout_height="@dimen/default_size"
                             android:layout_margin="@dimen/spacing_medium"
-                            android:contentDescription="@string/app_name"
                             android:background="@drawable/selectable_item_background"
-                            android:src="@mipmap/ic_twitter_box"/>
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="@dimen/spacing_xxlarge"
+                                android:layout_height="@dimen/spacing_xxlarge"
+                                android:contentDescription="@string/app_name"
+                                android:src="@mipmap/ic_twitter_box"/>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

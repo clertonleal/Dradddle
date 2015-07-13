@@ -40,5 +40,20 @@
     <string name="version_app">Version %s</string>
     <string name="used_libraries">Used libraries</string>
     <string name="software_developer">Software Developer</string>
+    <string name="dribbble_title">Show and tell for designers</string>
+    <string name="dribbble_about">
+        What are you working on? Dribbble is a community of designers answering that question each
+        day. Web designers, graphic designers, illustrators, icon artists, typographers, logo
+        designers, and other creative types share small screenshots (shots) that show their work,
+        process, and current projects.\n\n
+
+        Dribbble is a place to show and tell, promote, discover, and explore design.\n\n
+
+        Headquartered in Salem, Massachusetts, Dribbble began as a side project and is now a tiny,
+        bootstrapped and profitable company helping the world\'s design talent share their creations
+        and get hired. Dribbble has become a go-to resource for discovering and connecting with
+        designers around the globe.\n
+    </string>
+    <string name="text_taken_from_the_site">Text taken from the site</string>
 
 </resources>

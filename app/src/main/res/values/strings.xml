@@ -42,20 +42,20 @@
     <string name="version_app">Versão %s</string>
     <string name="used_libraries">Bibliotecas utilizadas</string>
     <string name="software_developer">Desenvolvedor de Software</string>
-
-    <string name="dribbble_title">Show and tell for designers</string>
+    <string name="dribbble_title">Mostrar e contar para designers</string>
     <string name="dribbble_about">
-        What are you working on? Dribbble is a community of designers answering that question each
-        day. Web designers, graphic designers, illustrators, icon artists, typographers, logo
-        designers, and other creative types share small screenshots (shots) that show their work,
-        process, and current projects.\n\n
+        Em que você está trabalhando? Dribbble é uma comunidade de designers respondendo a essa
+        pergunta todos os dias. Web designers, designers gráficos, ilustradores, artistas ícone,
+        tipógrafos, logo designers e outros tipos criativos partes pequenas screenshots (capturas)
+        que mostram seu trabalho, processos e projetos atuais.\n\n
 
-        Dribbble is a place to show and tell, promote, discover, and explore design.\n\n
+        Dribbble é um lugar para mostrar e dizer, promover, descobrir e explorar design.\n\n
 
-        Headquartered in Salem, Massachusetts, Dribbble began as a side project and is now a tiny,
-        bootstrapped and profitable company helping the world\'s design talent share their creations
-        and get hired. Dribbble has become a go-to resource for discovering and connecting with
-        designers around the globe.\n
+        Com sede em Salem, Massachusetts, Dribbble começou como um projeto paralelo e é agora um
+        pequeno, bootstrap e rentável empresa ajudando partes talento de design do mundo suas
+        criações e ser contratado. Dribbble tornou-se um recurso go-to para descobrir e se conectar
+        com designers de todo o mundo.\n
     </string>
+    <string name="text_taken_from_the_site">Texto extraído do site</string>
 
 </resources>

@@ -31,7 +31,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
 
     companion object {
 
-        platformStatic val REMAINING_ITEMS_TO_SEE_COUNT = 10
+        platformStatic val ITEM_LEFT_TO_LOAD_MORE = 10
         platformStatic val MAX_RETRIES = 3L
         platformStatic val INIT_PAGE = -1
     }
@@ -95,7 +95,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
         superRecyclerView!!.setupMoreListener({ numberOfItems, numberBeforeMore, currentItemPos ->
             reloadSmallViews()
             loadNextPage()
-        }, REMAINING_ITEMS_TO_SEE_COUNT)
+        }, ITEM_LEFT_TO_LOAD_MORE)
     }
 
     private fun loadFirstPage() {
@@ -104,7 +104,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
     }
 
     private fun loadNextPage() {
-        if (connectionService!!.hasConnection()) showLoadingLayout() else showWithoutNetworkLayout()
+        if (connectionService!!.hasConnection()) showLoadingView() else showWithoutNetworkView()
 
         actualPage++
 
@@ -114,18 +114,18 @@ public abstract class BaseShotsFragment : BaseFragment() {
                 .retry(MAX_RETRIES)
                 .subscribe({ shotsAdapter!!.addPage(it) }, { e(it.getMessage()!!) }, {
                     swipeLayout!!.setRefreshing(false)
-                    superRecyclerView!!.getMoreProgressView().setVisibility(View.GONE)
+                    superRecyclerView!!.hideMoreProgress()
                 })
         compositeSubscription.add(subscription)
     }
 
-    private fun showWithoutNetworkLayout() {
+    private fun showWithoutNetworkView() {
         val emptyView = superRecyclerView!!.getEmptyView()
         emptyView.findViewById(R.id.without_network).setVisibility(View.VISIBLE)
         emptyView.findViewById(R.id.loading).setVisibility(View.GONE)
     }
 
-    private fun showLoadingLayout() {
+    private fun showLoadingView() {
         val emptyView = superRecyclerView!!.getEmptyView()
         emptyView.findViewById(R.id.without_network).setVisibility(View.GONE)
         emptyView.findViewById(R.id.loading).setVisibility(View.VISIBLE)

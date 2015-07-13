@@ -218,4 +218,28 @@ public abstract class BaseActivity : AppCompatActivity() {
     private fun overrideTransitionWithReverse() {
         overrideTransition(AnimationsInfo.findReverseByAnimation(currentAnimation))
     }
+
+    protected fun overrideTransitionWithFade() {
+        overrideTransition(SupportedAnimations.FADE)
+    }
+
+    protected fun overrideTransitionWithZoom() {
+        overrideTransition(SupportedAnimations.ZOOM)
+    }
+
+    protected fun overrideTransitionWithSlideLeft() {
+        overrideTransition(SupportedAnimations.SLIDE_LEFT)
+    }
+
+    protected fun overrideTransitionWithSlideRight() {
+        overrideTransition(SupportedAnimations.SLIDE_RIGHT)
+    }
+
+    protected fun overrideTransitionWithSlideUp() {
+        overrideTransition(SupportedAnimations.SLIDE_UP)
+    }
+
+    protected fun overrideTransitionWithSlideDown() {
+        overrideTransition(SupportedAnimations.SLIDE_DOWN)
+    }
 }

@@ -77,6 +77,11 @@ public class MainActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
+            android.R.id.home -> {
+                finish()
+                overrideTransitionWithFade()
+                return true
+            }
             android.support.v7.appcompat.R.id.home ->
                 return drawerToggle!!.onOptionsItemSelected(item)
             else ->
@@ -97,6 +102,7 @@ public class MainActivity : BaseActivity() {
             }
         } else {
             super.onBackPressed()
+            overrideTransitionWithFade()
         }
     }
 
@@ -118,10 +124,10 @@ public class MainActivity : BaseActivity() {
 
         navigationView.inflateHeaderView(R.layout.drawer_header)
                 .setOnClickListener {
-                    val item = getMenuItem(R.id.drawer_dribbble)
-                    item.setChecked(true)
                     closeDrawer()
-                    navigateTo(DrawerItem.find(item.getItemId()))
+                    Handler().postDelayed({
+                        startWithZoom(javaClass<AboutActivity>())
+                    }, DRAWER_REPLACE_SCREEN_DELAY)
                 }
 
         drawerToggle = object: ActionBarDrawerToggle(this, drawerLayout, toolbar as Toolbar,
