@@ -33,6 +33,8 @@ public class ShotFragment(private val id: Long) : BaseFragment() {
     var dradddleNetwork: DradddleNetwork? = null
         @Inject set
 
+    private var shot: Shot? = null
+
     private val loadImageCallback = object : Callback {
         override fun onSuccess() {
             val bitmap = (shot_image.getDrawable() as BitmapDrawable).getBitmap()
@@ -103,15 +105,19 @@ public class ShotFragment(private val id: Long) : BaseFragment() {
     }
 
     private fun loadShot() {
-        val subscription = dradddleNetwork!!.retrieveShot(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ showShotInfo(it) })
-        compositeSubscription.add(subscription)
+        if (shot == null) {
+            val subscription = dradddleNetwork!!.retrieveShot(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ shot = it }, {}, { showShotInfo(shot) })
+            compositeSubscription.add(subscription)
+        } else {
+            showShotInfo(shot)
+        }
     }
 
-    private fun showShotInfo(shot: Shot) {
-        DradddlePicasso.loadAvatar(shot.player!!.avatarUrl!!).into(author_avatar)
+    private fun showShotInfo(shot: Shot?) {
+        DradddlePicasso.loadAvatar(shot!!.player!!.avatarUrl!!).into(author_avatar)
         DradddlePicasso.loadShot(shot.imageUrl!!).into(shot_image, loadImageCallback)
         collapsing_toolbar.setTitle(shot.title)
         shot_title.setText(shot.title)

@@ -18,4 +18,8 @@ public class ShotFragmentPagerAdapter(fm: FragmentManager) : FragmentPagerAdapte
         this.ids = ids
         notifyDataSetChanged()
     }
+
+    public fun getPosition(id: Long): Int {
+        return ids!!.indexOfFirst { it == id }
+    }
 }

@@ -107,6 +107,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
             override fun onShotClick(id: Long) {
                 val intent = Intent(context, javaClass<ShotActivity>())
                 intent.putExtra(DradddleConstants.SHOT_IDS, shotsAdapter!!.getIds())
+                intent.putExtra(DradddleConstants.SHOT_ID, id)
                 startActivity(intent)
             }
         })

@@ -30,4 +30,5 @@ public object DradddleConstants {
     val MAX_VALUE_ALPHA = 255.0
     val MIN_VALUE_ALPHA = 0.0
     val SHOT_IDS = "shot_ids"
+    val SHOT_ID = "shot_id"
 }

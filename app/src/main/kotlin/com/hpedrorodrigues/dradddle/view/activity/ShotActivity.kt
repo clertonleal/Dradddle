@@ -21,7 +21,12 @@ public class ShotActivity() : BaseActivity() {
 
     private fun configViewPager() {
         val adapter = ShotFragmentPagerAdapter(getSupportFragmentManager())
-        adapter.swapIds(getIntent().getLongArrayExtra(DradddleConstants.SHOT_IDS))
+        val ids = getIntent().getLongArrayExtra(DradddleConstants.SHOT_IDS)
+        adapter.swapIds(ids)
         pager!!.setAdapter(adapter)
+
+        val selectedId = getIntent().getLongExtra(DradddleConstants.SHOT_ID, 0)
+        val selectedPosition = adapter.getPosition(selectedId)
+        pager.setCurrentItem(selectedPosition, true)
     }
 }
