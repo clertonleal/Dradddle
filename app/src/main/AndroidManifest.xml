@@ -36,6 +36,9 @@
             android:name=".view.activity.SettingsActivity"
             android:label="@string/settings"
             android:configChanges="keyboardHidden|orientation"/>
+        <activity
+            android:name=".view.activity.ShotActivity"
+            android:configChanges="keyboardHidden|orientation"/>
 
         <receiver android:name=".receiver.NetworkStateChangeReceiver">
             <intent-filter>

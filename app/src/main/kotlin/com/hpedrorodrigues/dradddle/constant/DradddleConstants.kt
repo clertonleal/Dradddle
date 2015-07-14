@@ -29,4 +29,5 @@ public object DradddleConstants {
     val DRIBBBLE_WEB_ABOUT_URL = "https://dribbble.com/about"
     val MAX_VALUE_ALPHA = 255.0
     val MIN_VALUE_ALPHA = 0.0
+    val SHOT_IDS = "shot_ids"
 }

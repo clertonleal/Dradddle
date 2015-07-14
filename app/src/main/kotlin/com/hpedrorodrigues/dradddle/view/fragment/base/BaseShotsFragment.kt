@@ -1,6 +1,7 @@
 package com.hpedrorodrigues.dradddle.view.fragment.base
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.widget.SwipeRefreshLayout
@@ -12,10 +13,12 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import com.hpedrorodrigues.dradddle.R
+import com.hpedrorodrigues.dradddle.constant.DradddleConstants
 import com.hpedrorodrigues.dradddle.entity.Page
 import com.hpedrorodrigues.dradddle.network.DradddleNetwork
 import com.hpedrorodrigues.dradddle.observable.NetworkStateObservable
 import com.hpedrorodrigues.dradddle.service.ConnectionService
+import com.hpedrorodrigues.dradddle.view.activity.ShotActivity
 import com.hpedrorodrigues.dradddle.view.adapter.ShotsAdapter
 import com.malinskiy.superrecyclerview.SuperRecyclerView
 import com.malinskiy.superrecyclerview.swipe.SwipeDismissRecyclerViewTouchListener
@@ -66,6 +69,7 @@ public abstract class BaseShotsFragment : BaseFragment() {
         swipeLayout = superRecyclerView!!.getSwipeToRefresh()
 
         configSuperRecyclerView()
+        configAdapter()
         loadFirstPage()
 
         NetworkStateObservable.addObserver(networkStateObserver)
@@ -96,6 +100,16 @@ public abstract class BaseShotsFragment : BaseFragment() {
             reloadSmallViews()
             loadNextPage()
         }, ITEM_LEFT_TO_LOAD_MORE)
+    }
+
+    private fun configAdapter() {
+        shotsAdapter!!.setOnShotClickListener(object: ShotsAdapter.OnShotClickListener {
+            override fun onShotClick(id: Long) {
+                val intent = Intent(context, javaClass<ShotActivity>())
+                intent.putExtra(DradddleConstants.SHOT_IDS, shotsAdapter!!.getIds())
+                startActivity(intent)
+            }
+        })
     }
 
     private fun loadFirstPage() {

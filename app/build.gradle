@@ -1,12 +1,10 @@
 buildscript {
 
-//    ext.kotlin_version = '0.1-SNAPSHOT'
     ext.kotlin_version = '0.12.613'
 
     repositories {
 
         jcenter()
-        maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
         maven { url "https://jitpack.io" }
     }
 
@@ -20,7 +18,6 @@ buildscript {
 repositories {
 
     jcenter()
-    maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
     maven { url "https://jitpack.io" }
 }
 
@@ -32,10 +29,7 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
-    lintOptions {
-
-        abortOnError false
-    }
+    lintOptions { abortOnError false }
 
     defaultConfig {
 
@@ -90,6 +84,8 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:1.2.1'
     compile 'it.sephiroth.android.library.imagezoom:imagezoom:2.1.1'
     compile 'com.google.dagger:dagger:2.0'
+
     kapt 'com.google.dagger:dagger-compiler:2.0'
+
     provided 'org.glassfish:javax.annotation:10.0-b28'
 }

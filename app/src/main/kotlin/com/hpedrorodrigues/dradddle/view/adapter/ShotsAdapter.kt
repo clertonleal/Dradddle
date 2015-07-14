@@ -61,6 +61,8 @@ public class ShotsAdapter : RecyclerView.Adapter<ShotsHolder> {
         notifyDataSetChanged()
     }
 
+    public fun getIds(): LongArray = shots.map { it.id as Long }.toLongArray()
+
     public fun setOnShotClickListener(listener: OnShotClickListener) {
         onShotClickListener = listener
     }
